@@ -1,0 +1,239 @@
+/* Header */
+header {
+    background-image: url('../images/bluebg.png'); /* Đường dẫn tới hình nền */
+    background-size: cover; /* Đảm bảo hình nền bao phủ toàn bộ khu vực header */
+    background-position: center; /* Căn giữa hình nền */
+    flex: 0 0 auto; /* Không cho header co dãn */
+    color: white; /* Màu chữ trắng để hiển thị rõ trên hình nền */
+    background-color: #87ceeb; /* Màu nền bổ sung là màu xanh dương nhạt */
+    display: flex; /* Sử dụng Flexbox để sắp xếp các phần tử bên trong header */
+    flex-direction: column; /* Sắp xếp các phần tử bên trong header theo chiều dọc */
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+    /*justify-content: center; /* Căn giữa các phần tử theo chiều dọc */
+    position: relative; /* Đặt relative để điều chỉnh vị trí menu-icon */
+    justify-content: space-between;
+    padding: 5px 164px;
+}
+
+.top-bar {
+    display: flex; /* Căn các phần tử theo hàng ngang */
+    justify-content: space-between;
+    align-items: center; /* Căn giữa theo trục dọc */
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-right: auto;
+    padding: 0px 10px;
+
+}
+
+/* Biểu tượng 3 gạch của menu (menu icon) */
+
+.menu-icon {
+    cursor: pointer; /* Thay đổi con trỏ khi hover để biểu thị có thể nhấn */
+    position: absolute; /* Đặt menu-icon với position absolute */
+    right: 20px; /* Căn về phía phải với khoảng cách 20px */
+    top: 30px; /* Khoảng cách từ trên xuống là 15px */
+    margin-right: 20px;
+
+}
+.menu-icon img {
+    width: 30px  ;
+}
+/* Contact Info */
+.contact-info-right {
+    display: flex; /* Sử dụng Flexbox để sắp xếp các phần tử bên trong contact-info */
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    padding: 10px; /* Thêm khoảng cách bên trong là 10px */
+    border: 2px solid #030303; /* Thêm đường viền dày 2px màu xám nhạt */
+    border-radius: 50px; /* Bo tròn các góc với bán kính 50px */
+    background-color: #ffffff; /* Màu nền của thẻ là màu trắng */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ cho thẻ để tạo chiều sâu */
+    width: 200px; /* Đặt chiều rộng cố định là 180px */
+    max-width: 100%; /* Đảm bảo không vượt quá chiều rộng của phần tử chứa */
+    justify-content: center; /* Căn giữa các phần tử theo chiều ngang */
+    color: rgb(20, 20, 20); /* Màu chữ trắng cho số điện thoại */
+    margin-left: 100px;
+
+
+}
+.contact-info img {
+    width: 24px; /* Đặt chiều rộng hình ảnh là 24px */
+    margin-right: 10px; /* Thêm khoảng cách 10px bên phải hình ảnh */
+}
+
+.contact-info span {
+    font-size: 16px; /* Thay đổi kích thước văn bản nếu cần */
+    color: #333;
+}
+
+.phone-icon {
+    width: 20px; /* Chiều rộng của biểu tượng điện thoại */
+    height: 20px; /* Chiều cao của biểu tượng điện thoại */
+    margin-right: 5px; /* Khoảng cách giữa biểu tượng và số điện thoại */
+}
+
+/* Định dạng logo và tiêu đề trong header */
+.header-title {
+    display: flex; /* Căn logo và tiêu đề theo hàng ngang */
+    align-items: center; /* Căn giữa theo trục dọc */
+    left:10px;
+    margin-left: auto; /* Đẩy toàn bộ nội dung sang bên phải */
+}
+
+/* Định dạng cho logo cửa hàng */
+.header-title .logo {
+    width: 90px; /* Chiều rộng của logo */
+    height: 90px; /* Chiều cao của logo */
+    margin-right: 15px; /* Khoảng cách giữa logo và tiêu đề DuDu Store */
+}
+
+/* Tiêu đề của cửa hàng */
+.header-title h1 {
+    font-size: 30px; /* Kích thước chữ của tiêu đề */
+    color: #64CBEF; /* Màu chữ tiêu đề */
+}
+
+
+.trangchu, .menu-dmsp{
+    margin-left: 30px;
+}
+.trangchu a, .menu-dmsp a{
+    color: #031920;
+    font-size: 20px;
+}
+.trangchu{
+    margin-right: 10px;
+}
+/*Menu của DMSP*/
+/* Ẩn menu thả xuống khi trang được tải */
+.dropdown-product {
+    display: none; /* Menu thả xuống ban đầu bị ẩn */
+    max-height: 0; /* Chiều cao ban đầu là 0 để tạo hiệu ứng thả xuống */
+    overflow-y: auto;
+    position: absolute; /* Vị trí tuyệt đối để menu hiển thị dưới mục được chọn */
+    top:100%;
+    background-color: #64cbef; /* Màu nền của menu thả xuống */
+    min-width: 160px; /* Chiều rộng tối thiểu của menu */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Thêm hiệu ứng đổ bóng */
+    z-index: 1; /* Đảm bảo menu nằm trên các phần tử khác */
+    list-style: none; /* Xóa ký tự "chấm tròn" ở mỗi mục trong menu */
+    padding: 0; /* Xóa khoảng đệm bên trong */
+    transition: max-height 0.5s ease-out; /* Hiệu ứng mở rộng chiều cao trong 0.5 giây */
+}
+/* Khi menu mở ra, thay đổi chiều cao của menu */
+.dropdown-product.show {
+    display: block;
+    max-height: 200px; /* Chiều cao tối đa để menu mở ra từ từ (thay đổi theo nội dung) */
+}
+
+/* Định dạng các mục trong menu */
+.dropdown-product li {
+    list-style-type: none; /* Xóa ký tự trước mỗi mục (mặc định là dấu chấm) */
+}
+
+/* Định dạng các liên kết trong từng mục */
+.dropdown-product li a {
+    color:white; /* Đặt màu chữ của liên kết là đen */
+    padding: 12px 16px; /* Khoảng cách giữa văn bản và biên của mục */
+    text-decoration: none; /* Xóa gạch chân mặc định của liên kết */
+    display: block; /* Liên kết chiếm toàn bộ chiều rộng của mục, giúp dễ nhấp vào */
+
+}
+
+
+/* Hiệu ứng khi di chuột qua các mục trong menu */
+.dropdown-product li a:hover {
+    background-color: #ddd; /* Thay đổi màu nền khi di chuột qua từng mục */
+    cursor: pointer;
+}
+
+/* Thanh cuộn danh mục */
+.dropdown-product::-webkit-scrollbar {
+    width: 10px;
+}
+
+.dropdown-product::-webkit-scrollbar-thumb {
+    background-color: #E9FBFF;
+    border-radius: 5px;
+}
+
+.dropdown-product::-webkit-scrollbar-thumb:hover {
+    background-color: #CEF1F9;
+}
+
+
+
+
+
+
+/* Phong cách cho menu dropdown */
+.dropdown-content {
+
+        display: block; /* Đảm bảo dropdown-menu vẫn là block nhưng có height là 0 khi ẩn */
+        max-height: 0; /* Chiều cao ban đầu bằng 0 (menu bị ẩn) */
+        overflow: hidden; /* Ẩn các phần tử vượt quá chiều cao hiện tại */
+        transition: max-height 0.5s ease-out; /* Thêm hiệu ứng trượt xuống trong 0.5 giây */
+        position: absolute;
+        top: 70px; /* Điều chỉnh vị trí từ trên xuống */
+        right: 20px;
+        background-color:#64cbef;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        padding: 0; /* Padding 0 để loại bỏ padding ban đầu */
+        border-radius: 5px;
+
+}
+
+/* Định dạng cho các mục liên kết trong dropdown */
+.dropdown-content a {
+    color: white; /* Màu chữ trắng */
+    padding: 12px 16px; /* Khoảng cách bên trong giữa các liên kết */
+    text-decoration: none; /* Bỏ gạch chân */
+    display: block; /* Mỗi mục liên kết chiếm toàn bộ hàng */
+    font-size: 16px; /* Kích thước chữ của các liên kết */
+    transition: background-color 0.5s; /* Hiệu ứng chuyển màu khi hover */
+}
+
+/* Hiệu ứng khi hover vào các mục trong menu dropdown */
+.dropdown-content a:hover {
+    background-color: #023647; /* Màu nền sáng hơn khi hover */
+}
+
+/* Định dạng khi menu được hiển thị */
+.show {
+    display: block;
+}
+/* Navigation */
+nav {
+    display: flex; /* Sử dụng Flexbox để sắp xếp các liên kết nằm ngang */
+    justify-content: center; /* Căn giữa các liên kết */
+    align-items: center; /* Căn giữa các liên kết theo chiều dọc */
+    gap: 7px; /* Khoảng cách giữa các liên kết */
+    padding: 10px; /* Thêm khoảng cách bên trong nav nếu cần */
+}
+nav a {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex; /* Sử dụng Flexbox để sắp xếp các liên kết ngang */
+    gap: 7px; /* Khoảng cách giữa các liên kết */
+    padding: 10px 15px; /* Thêm khoảng cách xung quanh liên kết */
+    border-radius: 5px; /* Bo tròn các góc */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi mượt mà */
+}
+/* Hiệu ứng khi di chuột qua */
+nav a:hover {
+    background-color: #79d0f3; /* Màu nền khi di chuột qua */
+    color: white; /* Màu chữ khi di chuột qua */
+}
+nav ul:hover{
+    background-color: #79d0f3; /* Màu nền khi di chuột qua */
+    color: white; /* Màu chữ khi di chuột qua */
+}
+/* Hiệu ứng khi liên kết đang được chọn hoặc hoạt động */
+nav a.active {
+    background-color: #333; /* Màu nền khi liên kết đang được chọn */
+    color: white; /* Màu chữ khi liên kết đang được chọn */
+}
+
