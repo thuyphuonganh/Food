@@ -1,0 +1,321 @@
+.form-select {
+    width: 20%;
+}
+
+/* Products */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+
+}
+
+.product-item {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.product-link {
+    text-decoration: none;
+    /* Bỏ gạch chân */
+    color: inherit;
+    /* Kế thừa màu sắc từ phần tử cha */
+}
+
+.product-link:hover {
+    text-decoration: none;
+    /* Tùy chọn: thêm hiệu ứng gạch chân khi hover */
+}
+
+.product-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.text-info {
+    flex-grow: 1;
+    /* Chiếm không gian còn lại */
+    text-align: left
+}
+
+.product-info p,
+.product-info span {
+    margin: 0;
+    /* Xóa khoảng cách mặc định */
+    text-align: left;
+    /* Căn trái nội dung */
+    font-weight: bold;
+}
+
+.product-item button {
+    padding: 4px 25px;
+    background-color: #87ceeb;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: right;
+}
+
+.text-info button {
+    margin-top: 10px;
+    /* Khoảng cách giữa giá và nút "Mua" */
+    margin-left: 20px;
+    /* Khoảng cách bên trái để tạo không gian giữa giá và nút "Mua" */
+}
+
+.nav-item {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Product */
+.image-product {
+    width: 20rem;
+    border-radius: 1rem;
+}
+
+.name-product {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.price-product {
+    font-size: 1.25rem;
+    color: red;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.description-product {
+    font-size: 1.2rem;
+}
+
+strong {
+    font-size: 1.2rem;
+}
+
+/* Đăng xuất */
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#myForm {
+    display: none;
+}
+
+/* Cart */
+/* Content ---------------------------------------------------*/
+
+/* Item */
+.content-item {
+    /*Khoảng cách chiều ngang bố cục*/
+    border: 5px solid #64CBEF;
+    justify-content: center;
+}
+
+/* Ẩn checkbox mặc định */
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+    /* Ẩn checkbox mặc định */
+}
+
+
+/* Tạo ô vuông cho checkbox tùy chỉnh */
+.custom-checkbox {
+    /* Khoảng cách của checkbox so với các phần tử khác */
+    display: inline-block;
+    /* Hiển thị checkbox như một khối nội dung */
+    width: 80px;
+    /* Chiều rộng của ô vuông checkbox */
+    height: 80px;
+    /* Chiều cao của ô vuông checkbox */
+    background-color: #E0F2F9;
+    /* Màu nền khi chưa được chọn */
+    border-radius: 5px;
+    /* Tạo các góc bo tròn */
+    position: relative;
+    /* Định vị để hiển thị dấu check */
+}
+
+
+
+/* Thêm dấu check khi được chọn */
+.custom-checkbox .checkmark::after {
+    content: "";
+    /* Nội dung trống - chỉ sử dụng dấu check */
+    position: absolute;
+    /* Định vị tuyệt đối để nằm trong ô checkbox */
+    display: none;
+    /* Mặc định không hiển thị dấu check */
+    left: 28px;
+    /* Vị trí dấu check từ bên trái */
+    top: 16px;
+    /* Vị trí dấu check từ trên xuống */
+    width: 14px;
+    /* Chiều rộng của dấu check */
+    height: 34px;
+    /* Chiều cao của dấu check */
+    border: solid black;
+    /* Đường viền màu đen cho dấu check */
+    border-width: 0 5px 5px 0;
+    /* Định dạng viền của dấu check */
+    transform: rotate(45deg);
+    /* Xoay 45 độ để tạo hình dấu check */
+}
+
+/*Hiển thị checkbox khi click*/
+.custom-checkbox input[type="checkbox"]:checked+.checkmark::after {
+    display: block;
+    /* Hiển thị dấu check khi checkbox được chọn */
+}
+
+/* Kích thước ảnh */
+.content--item-img {
+    width: 200px;
+    /* Chiều rộng của ảnh sản phẩm */
+    height: 200px;
+    /* Chiều cao của ảnh sản phẩm */
+}
+
+/* Thông tin toàn bộ item*/
+.content-item-description {
+    width: 70%;
+    /* Chiều rộng phần mô tả sản phẩm chiếm 70% của item */
+}
+
+/* Tên item bên trên*/
+.item-name {
+    font-size: 48px;
+    /* Kích thước chữ cho tên sản phẩm */
+    font-weight: bold;
+    /* In đậm tên sản phẩm */
+    padding: 16px;
+    /* Khoảng cách xung quanh tên sản phẩm */
+}
+
+/* Thông tin item bên dưới*/
+.content-item-description-info {
+    width: 100%;
+    /* Chiếm 100% chiều rộng của khối mô tả */
+    display: flex;
+    /* Sắp xếp các phần tử theo hàng ngang */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    justify-content: space-between;
+    /* Tạo khoảng cách đều giữa các phần tử */
+}
+
+/* Giá */
+.item-gia {
+    font-size: 38px;
+    /* Kích thước chữ cho giá sản phẩm */
+    font-weight: 300;
+    /* Độ đậm nhạt của chữ cho giá sản phẩm */
+    padding: 16px;
+    /* Khoảng cách xung quanh phần giá */
+}
+
+/* Số lượng */
+.item-soluong {
+    font-size: 32px;
+    /* Kích thước chữ cho số lượng sản phẩm */
+    align-items: center;
+}
+
+/* Thêm giảm số lượng sản phẩm */
+.item-operator {
+    cursor: pointer;
+    width: 45px;
+    /* Chiều rộng của nút */
+    height: 45px;
+    /* Chiều cao của nút */
+    border: solid black;
+    /* Đường viền màu đen */
+    font-size: 32px;
+    /* Kích thước chữ cho dấu cộng/trừ */
+    border-radius: 5px;
+    /* Bo tròn góc nút */
+    background-color: transparent;
+    /* Nền trong suốt */
+}
+
+/* Xóa sản phẩm */
+.item-delete {
+    border-radius: 5px;
+    /* Bo tròn góc nút xóa */
+    width: 80px;
+    /* Chiều rộng của nút xóa */
+    height: 80px;
+    /* Chiều cao của nút xóa */
+    font-size: 70px;
+    /* Kích thước chữ cho dấu xóa */
+    border: none;
+    /* Không có viền */
+    background-color: #E0F2F9;
+    /* Màu nền xanh nhạt cho nút xóa */
+    font-weight: bold;
+    /* In đậm nội dung nút xóa */
+    display: flex;
+    /* Căn giữa nội dung nút xóa */
+    place-items: center;
+    /* Căn giữa theo cả chiều ngang và dọc */
+    justify-content: center;
+    /* Căn giữa nội dung nút */
+    align-items: center;
+    /* Căn giữa nội dung nút */
+    font-weight: bold;
+    /* In đậm chữ trong nút */
+}
+
+/* Kích thước của biểu tượng xóa */
+.item-delete-img {
+    width: 40px;
+    /* Chiều rộng của biểu tượng xóa */
+    height: 40px;
+    /* Chiều cao của biểu tượng xóa */
+}
+
+/* Tên tổng tiền */
+.tongtien-info {
+    /* Chiều rộng của khối thông tin tổng tiền */
+    font-size: 50px;
+    /* Kích thước chữ cho tên tổng tiền */
+    font-weight: bold;
+    /* In đậm tên tổng tiền */
+}
+
+
+/* Button xóa */
+.action-delete {
+    display: flex;
+    /* Sắp xếp nội dung của nút theo hàng ngang */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    width: 50%;
+    /* Chiều rộng của nút xóa */
+}
+
+/* Tên của button xóa */
+.item-delete-name {
+    font-size: 50px;
+    /* Kích thước chữ của tên nút xóa */
+}
+
+.btn-muahang {
+    font-size: 2rem;
+    width: 30rem;
+}
