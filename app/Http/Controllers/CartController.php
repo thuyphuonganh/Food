@@ -66,14 +66,14 @@ class CartController extends Controller
         if (isset($cart[$productId])) {
             unset($cart[$productId]);
             Session::put('cart', $cart);
-            return to_route('cart.index');
+            return redirect()->back();
         }
     }
 
-    public function forget(){
+    public function forget(Request $request){
         $cart = Session::get('cart', []);
-        Session::forget($cart);
-        return to_route('cart.index');
+        Session::forget('cart');
+        return redirect()->back();
     }
 
 }

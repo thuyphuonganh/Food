@@ -16,6 +16,11 @@
                 @csrf
                 @method('DELETE')
             </form>
+            <form action="{{ route('cart.delete') }}" method="POST"
+                id="formCartRemoveAll">
+                @csrf
+                <input type="hidden" name="productId" value="{{ $cartItem['productId'] }}">
+            </form>
             <div class="row align-items-center justify-content-center content-item mt-5">
                 <div class="col-xl-2 col-lg-2 col-md-6">
                     <label class="custom-checkbox ms-3 mt-3 mb-3">
@@ -59,7 +64,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 mt-5">
                 <div class="d-flex">
-                    <button onclick="" class="item-delete">
+                    <button onclick="document.getElementById('formCartRemoveAll').submit()" class="item-delete">
                         <img class="item-delete-img" src="{{ asset('images/x.jpg') }}" alt="">
                     </button>
                     <span class="item-delete-name">Xóa đã chọn</span>

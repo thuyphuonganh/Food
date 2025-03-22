@@ -1,4 +1,4 @@
-@extends('customer.layouts.master')
+@extends('guest.layouts.master')
 @section('content')
     <div class="container">
         <form action="{{ route('search') }}" method="GET" class="">
@@ -15,7 +15,7 @@
 
         <div class="product-grid" id="productGrid">
             @forelse ($products as $product)
-                <a href="{{ route('productDetail', ['id' => $product->id]) }}" class="product-link">
+                <a href="{{ route('productDetailGuest', ['id' => $product->id]) }}" class="product-link">
                     <div class="product-item">
                         <img src="{{ asset($product->image) }}" alt="">
                         <p class="card-title">{{ $product->name }}</p>
