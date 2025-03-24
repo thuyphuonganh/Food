@@ -5,6 +5,7 @@
         @csrf
         <input type="hidden" name="productId" value="{{ $product->id }}">
         <input type="hidden" name="quantity" value="1">
+        <input type="hidden" name="operator" value="1"> {{-- 1:Add  2:Remove --}}
     </form>
 
     <div class="mt-5 d-flex">

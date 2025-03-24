@@ -51,7 +51,7 @@
                                         onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
                             @else
                                 <li><a class="dropdown-item" href="#">Sign in for admin</a></li>
-                                <li><a class="dropdown-item" href="#">Sign in for customer</a></li>
+                                <li><a class="dropdown-item" href="{{ route('login') }}">Sign in for customer</a></li>
                                 @if (Route::has('register'))
                                     <li><a class="dropdown-item" href="#" onclick="">Register</a></li>
                                 @endif

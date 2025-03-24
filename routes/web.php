@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
@@ -23,7 +23,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
     //Cart
     Route::resource('/dashboard/cart', CartController::class);
-    Route::post('/dashboard/cart/delete', [CartController::class, 'forget'])->name('cart.delete');
+    Route::post('/dashboard/cart/delete/{id}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 });
 
 Route::middleware('auth')->group(function () {

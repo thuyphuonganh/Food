@@ -6,7 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class CartController extends Controller
+class CartController1 extends Controller
 {
     /**
      * Display a listing of the resource.
