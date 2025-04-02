@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Customer\CartController;
+use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
@@ -24,6 +25,12 @@ Route::middleware('auth', 'verified')->group(function () {
     //Cart
     Route::resource('/dashboard/cart', CartController::class);
     Route::post('/dashboard/cart/delete/{id}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
+
+    //Checkout
+    Route::post('/dashboard/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/dashboard/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/dashboard/checkout/callback', [CheckoutController::class, 'callback'])->name('checkout.callback');
+    Route::get('/dashboard/checkout/notify', [CheckoutController::class, 'notify'])->name('checkout.notify');
 });
 
 Route::middleware('auth')->group(function () {
