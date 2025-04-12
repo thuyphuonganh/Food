@@ -61,6 +61,9 @@ class CartController extends Controller
                 $cartItem->update([
                     'quantity' => $cartItem->quantity + 1
                 ]);
+                return response()->json([
+                    'message' => 'success'
+                ]);
             } else { //Remove
                 $cartItem->update([
                     'quantity' => $cartItem->quantity - 1
@@ -68,6 +71,9 @@ class CartController extends Controller
                 if ($cartItem->quantity <= 0) {
                     $cartItem->delete();
                 }
+                return response()->json([
+                    'message' => 'success'
+                ]);
             }
         } else {
             CartItem::create([
@@ -85,7 +91,9 @@ class CartController extends Controller
     {
         $cartItem = CartItem::findOrFail($id);
         $cartItem->delete();
-        return redirect()->back();
+        return response()->json([
+            'message' => 'success'
+        ]);
     }
 
     /**

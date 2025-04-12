@@ -156,7 +156,7 @@ class CheckoutController extends Controller
                         // return $orderDetail;
                         // return "SUCCESS";
                     }
-                    return "SUCCESS";
+                    return to_route('cart.index');
                 } else {
                     return "Đơn hàng không tồn tại";
                 }
