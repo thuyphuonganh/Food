@@ -45,7 +45,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Description</label>
-                        <textarea class="form-control" rows="2"></textarea>
+                        <textarea class="form-control" rows="2" name="description"></textarea>
                     </div>
 
                     <!-- Phương thức thanh toán -->
@@ -53,6 +53,10 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="payment_method" value="momo">
                         <label class="form-check-label">MoMo</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="payment_method" value="cod">
+                        <label class="form-check-label">Thanh toán khi nhận hàng</label>
                     </div>
                     <input type="hidden" name="total_amount" value="{{ $total_amount }}">
                     <input type="hidden" name="selected_products", value="{{ json_encode($selectedProducts) }}">

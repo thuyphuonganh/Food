@@ -49,10 +49,10 @@
                                     <li><a class="dropdown-item" href="#"
                                             onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
                                 @else
-                                    <li><a class="dropdown-item" href="#">Sign in for admin</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('admin.login') }}">Sign in for admin</a></li>
                                     <li><a class="dropdown-item" href="{{ route('login') }}">Sign in for customer</a></li>
                                     @if (Route::has('register'))
-                                        <li><a class="dropdown-item" href="#" onclick="">Register</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
                                     @endif
 
                                 @endauth

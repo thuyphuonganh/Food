@@ -16,7 +16,6 @@ class ProductSeeder extends Seeder
         for ($i = 1; $i <= 20; $i++) {
             Product::create([
                 'name' => 'Gấu bông',
-                'slug' => 'gaubong',
                 'price' => rand(300000, 500000),
                 'description' => 'Wonderful',
                 'image' => 'images/capybara.png',

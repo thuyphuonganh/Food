@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +45,42 @@ class CheckoutController extends Controller
         if (!$products || empty($products)) {
             return redirect()->back()->with('error', 'Không có sản phẩm nào được chọn.');
         }
+
+        if ($request->payment_method == 'cod') {
+            $order = new Order();
+            $order->id = time() . "";
+            $order->fullName = $request->name;
+            $order->phoneNumber = $request->phone;
+            $order->address = $request->address;
+            $order->description = $request->description;
+            $order->status = 'pending';
+            $order->total_amount = $request->total_amount;
+            $order->user_id = Auth::user()->id;
+            $order->save();
+            $payment = new Payment();
+            $payment->order_id = $order->id;
+            $payment->payment_method = 'cod';
+            $payment->amount_paid = $order->total_amount;
+            foreach ($products as $product) {
+                $orderDetail = new OrderDetail();
+                $orderDetail->order_id = $order->id;
+                $orderDetail->product_id = $product['productId'];
+                $orderDetail->price = $product['price'];
+                $orderDetail->quantity = $product['quantity'];
+                $orderDetail->save();
+            }
+            $orderDetails = OrderDetail::where('order_id', $order->id)->get();
+            foreach ($orderDetails as $orderDetail) {
+                $cartItem = CartItem::where('product_id', $orderDetail->product_id)->first();
+                if ($cartItem) {
+                    $cartItem->delete();
+                }
+            }
+            $payment->status = 'failed';
+            $payment->save();
+            return to_route('cart.index');
+        }
+
         $order = new Order();
         $order->id = time() . "";
         $order->fullName = $request->name;
@@ -105,7 +142,6 @@ class CheckoutController extends Controller
         } else {
             return redirect()->back()->with('error', 'Lỗi kết nối đến MoMo');
         }
-        //return $request->all();
     }
 
     public function execPostRequest($url, $data)
@@ -135,16 +171,20 @@ class CheckoutController extends Controller
     {
 
         $signature = $request->input('signature');
+        $orderId = $request->input('orderId');
+        $amount = $request->input('amount');
+        $payment = new Payment();
+        $payment->order_id = $orderId;
+        $payment->payment_method = 'momo';
+        $payment->amount_paid = $amount;
+
         $data = $request->all();
         $generatedSignature = $data['signature'];
         if ($signature == $generatedSignature) {
             $status = $request->input('resultCode');
             if ($status == 0) {
-                $orderId = $request->input('orderId');
-                $order = Order::find($orderId);
+                $order = Order::findOrFail($orderId);
                 if ($order) {
-                    $order->status = 'completed';
-                    $order->save();
 
                     $orderDetails = OrderDetail::where('order_id', $order->id)->get();
                     foreach ($orderDetails as $orderDetail) {
@@ -152,17 +192,24 @@ class CheckoutController extends Controller
                         if ($cartItem) {
                             $cartItem->delete();
                         }
-
-                        // return $orderDetail;
-                        // return "SUCCESS";
                     }
+
+                    $payment->status = 'paid';
+                    $payment->save();
                     return to_route('cart.index');
                 } else {
+                    $payment->status = 'failed';
+                    $payment->save();
                     return "Đơn hàng không tồn tại";
                 }
             } else {
-                return "Thanh toán không thành công";
+                $payment->status = 'failed';
+                $payment->save();
+                //"Thanh toán không thành công";
+                return to_route('cart.index');
             }
+            $payment->status = 'failed';
+            $payment->save();
             return $generatedSignature;
         }
     }
