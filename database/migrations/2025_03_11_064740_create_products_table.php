@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->double('price');
-            $table->text('description');
-            $table->string('image');
-            $table->enum('status', ['in-stock', 'out-stock'])->default('in-stock');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('products')) { // Kiểm tra xem bảng products đã tồn tại chưa
+            Schema::create('products', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('slug');
+                $table->double('price');
+                $table->text('description');
+                $table->string('image');
+                $table->enum('status', ['in-stock', 'out-of-stock'])->default('in-stock');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
