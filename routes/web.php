@@ -9,7 +9,7 @@ use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('search');
 //ProductDetail

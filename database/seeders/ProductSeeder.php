@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Gấu bông',
                 'price' => rand(300000, 500000),
                 'description' => 'Wonderful',
-                'image' => 'images/capybara.png',
+                'image' => 'images/CanhCutBongDeoYemKhongLo5.jpg',
                 'category_id' => '1'
             ]);
         }

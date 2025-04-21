@@ -83,7 +83,7 @@
 
                                         <div class="col-12">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email" :value="old('email', $request->email)"
+                                            <input type="email" class="form-control" name="email" value="{{ old('email', $request->email) }}"
                                                 placeholder="Email">
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
 

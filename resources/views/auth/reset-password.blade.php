@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>SignUp DuDuStore</title>
+    <title>Confirm DuDuStore</title>
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-4/assets/css/login-4.css">
 </head>
 
@@ -41,7 +41,7 @@
 
                                         <div class="col-12">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email" :value="old('email', $request->email)"
+                                            <input type="email" class="form-control" name="email" value="{{ old('email', $request->email) }}"
                                                 placeholder="Email">
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
 

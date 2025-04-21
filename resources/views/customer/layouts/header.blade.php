@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand align-items-center header" href="#">
             DuDu Store
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -10,16 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                    <a class="nav-link active header" aria-current="page" href="{{ route('home') }}">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">PRODUCTS</a>
+                    <a class="nav-link active header" href="#">PRODUCTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-disabled="true">ABOUT</a>
+                    <a class="nav-link active header" href="#" aria-disabled="true">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">CONTACT</a>
+                    <a class="nav-link active header" href="#" tabindex="-1" aria-disabled="true">CONTACT</a>
                 </li>
             </ul>
 

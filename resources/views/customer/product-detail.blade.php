@@ -13,24 +13,28 @@
 
             <div class="col-xl-7 col-lg-7 mt-3">
                 <h1 class="name-product">{{ $product->name }}</h1>
-                <p class="price-product">{{ $product->price }} đ</p>
+                <p class="price-product">{{ $product->price }}đ</p>
                 <div class="d-flex">
-                    <div class="col">
+                    <div class="col-6">
                         <strong>Tình trạng hàng:</strong>
                         <p class="description-product mt-1">{{ $product->status }}</p>
                     </div>
-                    <div class="col">
+                    <div class="col-6 text-center">
                         <strong>Phân loại:</strong>
                         <p class="description-product mt-1">{{ $product->category->name }}</p>
                     </div>
 
                 </div>
-                <button onclick="addProductToCart({{ $product->id }})" class="btn btn-primary btn-general">
-                    <span class="btn-action">THÊM VÀO GIỎ HÀNG</span>
-                </button>
-                <button class="btn btn-success btn-general mt-2" onclick="buy({{ $product}})">
-                    <span>THANH TOÁN</span>
-                </button>
+                <div class="d-flex justify-content-center">
+                    <button onclick="addProductToCart({{ $product->id }})" class="btn btn-primary btn-general">
+                        <span class="btn-action">THÊM VÀO GIỎ HÀNG</span>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-success btn-general mt-2" onclick="buy({{ $product}})">
+                        <span>THANH TOÁN</span>
+                    </button>
+                </div>
                 <div class="d-flex mt-3 text-des">
                     <ul class="list-unstyled me-5">
                         <li>✔ 100% bông trắng tinh khiết</li>
@@ -123,7 +127,7 @@
             </div>
         </div>
 
-        <nav>
+        <nav class="mt-5">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home"
                     role="tab" aria-controls="nav-home" aria-selected="true">THÔNG TIN SẢN PHẨM</a>

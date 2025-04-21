@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     function index() {
-        $products = Product::Paginate(15);
+        $products = Product::Paginate(12);
         return view('customer.dashboard', compact('products'));
     }
 
@@ -20,7 +20,7 @@ class DashboardController extends Controller
         }
         $products = Product::where('name', 'like', "%".$search."%")
         ->orderBy('price', $order)
-        ->paginate(15);
+        ->paginate(12);
         return view('customer.dashboard', compact('products'));
     }
 
