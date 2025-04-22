@@ -41,9 +41,10 @@
                 width: 100%
             }
         }
+
     </style>
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="container">
+        <div class="container animate-slide-up">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true"
                     aria-label="Slide 1"></button>
@@ -75,18 +76,30 @@
         </div>
 
     </div>
-    <div class="container mt-2">
+    <div class="container mt-2 animate-slide-up">
         <h3 class="text-center title">DuDuStore - Shop gấu bông đẹp và cao cấp</h3>
         <form action="{{ route('search') }}" method="GET" class="">
-            <div class="d-flex">
-                <input class="form-control mt-3" type="search" name="search" placeholder="Search" aria-label="Search"
-                    style="width: 20%" value="{{ request('search') }}">
+            <div class="d-flex align-items-center justify-content-center">
+                <input class="form-control mt-3" type="search" name="search" placeholder="Tìm kiếm theo tên sản phẩm" aria-label="Search"
+                    style="width: 30%" value="{{ request('search') }}">
                 <button class="btn btn-primary ms-2 mt-3" type="submit">Search</button>
-                <select class="form-select ms-auto mt-3" name="order" id="exampleSelect">
+            </div>
+            <div class="d-flex">
+                <select class="form-select me-auto mt-3" name="category" id="exampleSelect">
+                    <option value="">DANH MỤC SẢN PHẨM</option>
+                    @forelse ($categories as $category)
+                        <option @selected(request('category') == $category->id) value="{{ $category->id }}">
+                            {{ $category->name }}</option>
+                    @empty
+                        <option value="">No categories available</option>
+                    @endforelse
+                </select>
+                <select class="form-select ms-auto mt-3" name="order" id="exampleSelect" onchange="this.form.submit()">
                     <option @selected(request('order') == 'asc') value="asc">Filter by price: Low to high</option>
                     <option @selected(request('order') == 'desc') value="desc">Filter by price: High to low</option>
                 </select>
             </div>
+
         </form>
 
         {{-- <div class="product-grid" id="productGrid">

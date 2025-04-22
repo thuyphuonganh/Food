@@ -1,6 +1,6 @@
 @extends('customer.layouts.master')
 @section('content')
-    <div class="container mt-5">
+    <div class="container animate-slide-up mt-5">
         <h1 class="mb-4 text-center">Thanh Toán</h1>
 
         <div class="row">

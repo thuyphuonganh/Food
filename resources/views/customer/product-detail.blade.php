@@ -1,6 +1,6 @@
 @extends('customer.layouts.master')
 @section('content')
-    <div class="container">
+    <div class="container animate-slide-up">
         <form action="{{ route('checkout.index') }}" method="post" id="formCartCheckout">
             @csrf
             <input type="hidden" name="selected_products" id="selected-products">
@@ -66,7 +66,7 @@
                     </button>
                 </div>
                 <div class="d-flex mt-3 text-des">
-                    <ul class="list-unstyled me-5">
+                    <ul class="list-unstyled me-auto">
                         <li>✔ 100% bông trắng tinh khiết</li>
                         <li>✔ Bảo hành đường chỉ trọn đời</li>
                         <li>✔ Miễn phí Gói quà</li>
