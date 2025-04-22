@@ -26,13 +26,43 @@
 
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button onclick="addProductToCart({{ $product->id }})" class="btn btn-primary btn-general">
-                        <span class="btn-action">THÊM VÀO GIỎ HÀNG</span>
+                    <button onclick="addProductToCart({{ $product->id }})" class="btn btn-primary btn-general me-1">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-shopping-cart">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z" />
+                            </svg>
+                            <span class="btn-action ms-1">
+                                THÊM VÀO GIỎ HÀNG
+                            </span>
+                        </div>
+
                     </button>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button class="btn btn-success btn-general mt-2" onclick="buy({{ $product}})">
-                        <span>THANH TOÁN</span>
+                    <button class="btn btn-success btn-general ms-1" onclick="buy({{ $product }})">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-cash-register">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M21 15h-2.5c-.398 0 -.779 .158 -1.061 .439c-.281 .281 -.439 .663 -.439 1.061c0 .398 .158 .779 .439 1.061c.281 .281 .663 .439 1.061 .439h1c.398 0 .779 .158 1.061 .439c.281 .281 .439 .663 .439 1.061c0 .398 -.158 .779 -.439 1.061c-.281 .281 -.663 .439 -1.061 .439h-2.5" />
+                                <path d="M19 21v1m0 -8v1" />
+                                <path
+                                    d="M13 21h-7c-.53 0 -1.039 -.211 -1.414 -.586c-.375 -.375 -.586 -.884 -.586 -1.414v-10c0 -.53 .211 -1.039 .586 -1.414c.375 -.375 .884 -.586 1.414 -.586h2m12 3.12v-1.12c0 -.53 -.211 -1.039 -.586 -1.414c-.375 -.375 -.884 -.586 -1.414 -.586h-2" />
+                                <path
+                                    d="M16 10v-6c0 -.53 -.211 -1.039 -.586 -1.414c-.375 -.375 -.884 -.586 -1.414 -.586h-4c-.53 0 -1.039 .211 -1.414 .586c-.375 .375 -.586 .884 -.586 1.414v6m8 0h-8m8 0h1m-9 0h-1" />
+                                <path d="M8 14v.01" />
+                                <path d="M8 17v.01" />
+                                <path d="M12 13.99v.01" />
+                                <path d="M12 17v.01" />
+                            </svg>
+                            <span class="btn-action ms-1">
+                                THANH TOÁN
+                            </span>
+                        </div>
                     </button>
                 </div>
                 <div class="d-flex mt-3 text-des">

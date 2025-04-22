@@ -1,5 +1,47 @@
 @extends('customer.layouts.master')
 @section('content')
+    <style>
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: #e2e8ec;
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                width: 100%;
+                height: 27rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .row-all {
+                justify-content: center;
+                content-align: center;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin: 0 auto;
+                padding: 0 1rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .card {
+                width: 80%;
+                height: 25rem;
+            }
+
+            .image-card {
+                height: 18rem;
+                width: 100%
+            }
+        }
+    </style>
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="container">
             <div class="carousel-indicators">
@@ -63,13 +105,13 @@
 
         </div> --}}
 
-        <div class="row mt-3 align-items-center">
+        <div class="row mt-3 align-items-center row-all">
             @forelse ($products as $product)
                 <div class="d-flex col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                    <div class="card shadow mb-3 me-1" style="width: 100%; height: 27rem;">
+                    <div class="card card-hover shadow mb-3 me-1">
                         <a href="{{ route('productDetail', ['id' => $product->id]) }}" style="text-decoration: none">
-                            <img src="{{ asset($product->image) }}" class="card-img-top d-block mx-auto" alt="..."
-                                style="height: 20rem; width: 100%">
+                            <img src="{{ asset($product->image) }}" class="card-img-top image-card d-block mx-auto"
+                                alt="...">
                             <div class="card-body mt-2">
                                 <h5 class="card-title text-center text-truncate-2 name">{{ $product->name }}</h5>
                                 <p class="card-text text-center price">{{ $product->price }}đ</p>

@@ -36,7 +36,7 @@
                         <th scope="row">
                             <div class="d-flex align-items-center">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="product" class="product-checkbox" id="customCheck1"
+                                    <input type="checkbox" name="product" class="product-checkbox form-check-input" id="customCheck1"
                                         value="{{ $item->product_id }}" data-name="{{ $item->product->name }}"
                                         data-image="{{ asset($item->product->image) }}" data-price="{{ $item->price }}"
                                         data-quantity="{{ $item->quantity }}">
