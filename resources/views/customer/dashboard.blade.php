@@ -8,7 +8,14 @@
         .card-hover:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background-color: #e2e8ec;
+            background-color: #f2f4f5;
+        }
+
+
+        .image-card {
+            height: 19rem;
+            width: 100%;
+            object-fit: fill;
         }
 
         @media (min-width: 768px) {
@@ -35,13 +42,7 @@
                 width: 80%;
                 height: 25rem;
             }
-
-            .image-card {
-                height: 18rem;
-                width: 100%
-            }
         }
-
     </style>
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="container animate-slide-up">
@@ -80,8 +81,8 @@
         <h3 class="text-center title">DuDuStore - Shop gấu bông đẹp và cao cấp</h3>
         <form action="{{ route('search') }}" method="GET" class="">
             <div class="d-flex align-items-center justify-content-center">
-                <input class="form-control mt-3" type="search" name="search" placeholder="Tìm kiếm theo tên sản phẩm" aria-label="Search"
-                    style="width: 30%" value="{{ request('search') }}">
+                <input class="form-control mt-3" type="search" name="search" placeholder="Tìm kiếm theo tên sản phẩm"
+                    aria-label="Search" style="width: 30%" value="{{ request('search') }}">
                 <button class="btn btn-primary ms-2 mt-3" type="submit">Search</button>
             </div>
             <div class="d-flex">
