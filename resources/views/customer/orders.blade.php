@@ -30,12 +30,12 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td>{{ $order->id }}</td>
-                                        <td>{{ $order->name }}</td>
-                                        <td>{{ $order->phone }}</td>
+                                        <td>{{ $order->fullName }}</td>
+                                        <td>{{ $order->phoneNumber }}</td>
                                         <td>{{ $order->address }}</td>
-                                        <td>{{ $order->note }}</td>
+                                        <td>{{ $order->description }}</td>
                                         <td>{{ $order->status }}</td>
-                                        <td>{{ number_format($order->total, 0, ',', '.') }} VNĐ</td>
+                                        <td>{{ number_format($order->total_amount, 0, ',', '.') }} VNĐ</td>
                                         <td>
                                             <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary btn-sm">Xem chi tiết</a>
                                         </td>

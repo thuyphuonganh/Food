@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         // Lấy danh sách đơn hàng của khách hàng hiện tại
         $orders = Order::where('user_id', Auth::id())->with('orderDetails')->get();
-        return view('user.orders', compact('orders'));
+        return view('customer.orders', compact('orders'));
     }
 
     public function show($id)
@@ -22,6 +22,6 @@ class OrderController extends Controller
                       ->where('user_id', Auth::id())
                       ->with('orderDetails')
                       ->firstOrFail();
-        return view('user.order-details', compact('order'));
+        return view('customer.order-details', compact('order'));
     }
 }
