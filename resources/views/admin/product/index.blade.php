@@ -17,7 +17,6 @@
         <tr>
             <th>#</th>
             <th>Product Name</th>
-            <th>Slug</th>
             <th>Price</th>
             <th>Image</th>
             <th>Category</th>
@@ -30,7 +29,6 @@
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->slug }}</td>
             <td>{{ number_format($product->price, 0, ',', '.') }} đ</td>
             <td>
                 @if (!empty($product->image))
@@ -42,17 +40,28 @@
 
             <td>{{ $product->category->name ?? 'Uncategorized' }}</td>
             <td>
-                <span class="badge badge-{{ $product->status == 'active' ? 'success' : 'secondary' }}">
+                <span class="badge badge-{{ $product->status == 'in-stock' ? 'success' : 'secondary' }}">
                     {{ ucfirst($product->status) }}
                 </span>
             </td>
             <td class="text-right">
                 <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                <a href="{{ route('admin.product.destroy', $product->id) }}" onclick="return confirm('Are you sure?');" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+  
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+                <!-- Centered Pagination -->
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $products->links('pagination::bootstrap-4') }}
+                </div>
+
+                @if ($products->total() > 0)
+                    <div class="text-center mt-2 small text-muted">
+                        Hiển thị {{ $products->firstItem() }} đến {{ $products->lastItem() }} trong tổng số {{ $products->total() }} kết quả
+                    </div>
+                @endif
+
 
 @stop

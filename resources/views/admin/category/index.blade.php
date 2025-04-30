@@ -24,7 +24,6 @@
         <tr>
             <th>STT</th>
             <th>Category Name</th>
-            <th>Category Slug</th>
             <th></th>
         </tr>
     </thead>
@@ -33,7 +32,6 @@
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $category->name }}</td>
-            <td>{{ $category->slug }}</td>
             <td class="text-right">
                 <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                 <a href="{{ route('admin.category.destroy', $category->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
