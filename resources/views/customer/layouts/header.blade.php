@@ -46,6 +46,7 @@
                             @if (Route::has('login'))
                                 @auth
                                     <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Thông tin khách hàng</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('orders.index') }}">Lịch sử đơn hàng</a></li>
                                     <li><a class="dropdown-item" href="#"
                                             onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
                                 @else
