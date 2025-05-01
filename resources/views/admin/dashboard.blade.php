@@ -26,9 +26,12 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('ad_assets/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="{{ asset('ad_assets/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('ad_assets/dist/css/skins/_all-skins.min.css') }}">
+  <link rel="icon" type="image/png" href="{{ asset('images/favicon.png.png') }}">
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,7 +43,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Admin</b>DUDU</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -57,7 +60,7 @@
           <li class="dropdown user user-menu"> <!--D:\xampp\htdocs\Doan2\Shop\public\images -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('ad_assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">DUDU</span>
             </a>
           </li>
         </ul>
@@ -77,7 +80,7 @@
           <img src="{{ asset('ad_assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>DUDU</p>
           <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fa fa-circle text-success"></i> Logout
           </a>
@@ -95,36 +98,36 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li>
-            <a href="#">
+            <a href="{{ route('admin.view_admin.index') }}">
               <i class="fa fa-home"></i> <span>Dashboard</span>
             </a>
           </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-th"></i> <span>Categories</span> <i class="fa fa-angle-left
+            <i class="fa fa-th"></i> <span>Danh mục sản phẩm</span> <i class="fa fa-angle-left
             pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.category.index') }}"><i class="fa fa-circle-o"></i> List</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Add new</a></li>
+            <li><a href="{{ route('admin.category.index') }}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{{ route('admin.category.create') }}"><i class="fa fa-circle-o"></i> Tạo mới</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-th"></i> <span>Product</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-box"></i> <span>Sản phẩm</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.product.index') }}"><i class="fa fa-circle-o"></i> List</a></li>
-            <li><a href="{{ route('admin.product.create') }}"><i class="fa fa-circle-o"></i> Add new</a></li>
+            <li><a href="{{ route('admin.product.index') }}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{{ route('admin.product.create') }}"><i class="fa fa-circle-o"></i> Tạo mới</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-shopping-cart"></i> <span>Orders</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-shopping-cart"></i> <span>Đơn hàng</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ asset('ad_assets/index.html') }}"><i class="fa fa-circle-o"></i> List</a></li>
-            <li><a href="{{ asset('ad_assets/index2.html') }}"><i class="fa fa-circle-o"></i> Status update</a></li>
+            <li><a href="{{ route('admin.orders.index') }}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <!--<li><a href="{{ asset('admin.orders.updateStatus') }}"><i class="fa fa-circle-o"></i> Status update</a></li>-->
           </ul>
         </li>
 

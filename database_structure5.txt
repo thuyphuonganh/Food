@@ -1,0 +1,174 @@
+Bảng: admins
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: name | Kiểu dữ liệu: varchar(255)
+Cột: email | Kiểu dữ liệu: varchar(255)
+Cột: email_verified_at | Kiểu dữ liệu: timestamp
+Cột: password | Kiểu dữ liệu: varchar(255)
+Cột: remember_token | Kiểu dữ liệu: varchar(100)
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: cache
+-----------------------------
+Cột: key | Kiểu dữ liệu: varchar(255)
+Cột: value | Kiểu dữ liệu: mediumtext
+Cột: expiration | Kiểu dữ liệu: int(11)
+
+
+Bảng: cache_locks
+-----------------------------
+Cột: key | Kiểu dữ liệu: varchar(255)
+Cột: owner | Kiểu dữ liệu: varchar(255)
+Cột: expiration | Kiểu dữ liệu: int(11)
+
+
+Bảng: cart_items
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: cart_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: product_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: quantity | Kiểu dữ liệu: int(11)
+Cột: price | Kiểu dữ liệu: decimal(10,2)
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: carts
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: user_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: categories
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: name | Kiểu dữ liệu: varchar(255)
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: failed_jobs
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: uuid | Kiểu dữ liệu: varchar(255)
+Cột: connection | Kiểu dữ liệu: text
+Cột: queue | Kiểu dữ liệu: text
+Cột: payload | Kiểu dữ liệu: longtext
+Cột: exception | Kiểu dữ liệu: longtext
+Cột: failed_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: job_batches
+-----------------------------
+Cột: id | Kiểu dữ liệu: varchar(255)
+Cột: name | Kiểu dữ liệu: varchar(255)
+Cột: total_jobs | Kiểu dữ liệu: int(11)
+Cột: pending_jobs | Kiểu dữ liệu: int(11)
+Cột: failed_jobs | Kiểu dữ liệu: int(11)
+Cột: failed_job_ids | Kiểu dữ liệu: longtext
+Cột: options | Kiểu dữ liệu: mediumtext
+Cột: cancelled_at | Kiểu dữ liệu: int(11)
+Cột: created_at | Kiểu dữ liệu: int(11)
+Cột: finished_at | Kiểu dữ liệu: int(11)
+
+
+Bảng: jobs
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: queue | Kiểu dữ liệu: varchar(255)
+Cột: payload | Kiểu dữ liệu: longtext
+Cột: attempts | Kiểu dữ liệu: tinyint(3) unsigned
+Cột: reserved_at | Kiểu dữ liệu: int(10) unsigned
+Cột: available_at | Kiểu dữ liệu: int(10) unsigned
+Cột: created_at | Kiểu dữ liệu: int(10) unsigned
+
+
+Bảng: migrations
+-----------------------------
+Cột: id | Kiểu dữ liệu: int(10) unsigned
+Cột: migration | Kiểu dữ liệu: varchar(255)
+Cột: batch | Kiểu dữ liệu: int(11)
+
+
+Bảng: order_details
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: order_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: product_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: price | Kiểu dữ liệu: decimal(10,2)
+Cột: quantity | Kiểu dữ liệu: int(11)
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: orders
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: fullName | Kiểu dữ liệu: varchar(255)
+Cột: phoneNumber | Kiểu dữ liệu: varchar(255)
+Cột: address | Kiểu dữ liệu: varchar(255)
+Cột: description | Kiểu dữ liệu: varchar(255)
+Cột: status | Kiểu dữ liệu: enum('pending','completed','cancelled')
+Cột: total_amount | Kiểu dữ liệu: decimal(10,2)
+Cột: user_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: password_reset_tokens
+-----------------------------
+Cột: email | Kiểu dữ liệu: varchar(255)
+Cột: token | Kiểu dữ liệu: varchar(255)
+Cột: created_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: payments
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: order_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: payment_method | Kiểu dữ liệu: enum('cod','momo')
+Cột: amount_paid | Kiểu dữ liệu: decimal(10,2)
+Cột: status | Kiểu dữ liệu: enum('paid','failed')
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+
+Bảng: products
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: name | Kiểu dữ liệu: varchar(255)
+Cột: price | Kiểu dữ liệu: decimal(10,2)
+Cột: description | Kiểu dữ liệu: text
+Cột: image | Kiểu dữ liệu: varchar(255)
+Cột: status | Kiểu dữ liệu: enum('in-stock','out-stock')
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+Cột: category_id | Kiểu dữ liệu: bigint(20) unsigned
+
+
+Bảng: sessions
+-----------------------------
+Cột: id | Kiểu dữ liệu: varchar(255)
+Cột: user_id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: ip_address | Kiểu dữ liệu: varchar(45)
+Cột: user_agent | Kiểu dữ liệu: text
+Cột: payload | Kiểu dữ liệu: longtext
+Cột: last_activity | Kiểu dữ liệu: int(11)
+
+
+Bảng: users
+-----------------------------
+Cột: id | Kiểu dữ liệu: bigint(20) unsigned
+Cột: name | Kiểu dữ liệu: varchar(255)
+Cột: email | Kiểu dữ liệu: varchar(255)
+Cột: email_verified_at | Kiểu dữ liệu: timestamp
+Cột: password | Kiểu dữ liệu: varchar(255)
+Cột: remember_token | Kiểu dữ liệu: varchar(100)
+Cột: created_at | Kiểu dữ liệu: timestamp
+Cột: updated_at | Kiểu dữ liệu: timestamp
+
+

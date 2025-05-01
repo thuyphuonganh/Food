@@ -36,17 +36,14 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        // Tạo slug tự động từ name
-        $slug = Str::slug($request->name);
 
         // Lưu category vào database
         Category::create([
             'name' => $request->name,
-            'slug' => $slug,
         ]);
 
         // Chuyển hướng về danh sách category hoặc về trang chủ
-        return redirect()->route('admin.category.index')->with('success', 'Category created successfully.');
+        return redirect()->route('admin.category.index')->with('success', 'Danh mục đã được tạo thành công!');
     }
 
     /**
@@ -65,7 +62,7 @@ class CategoryController extends Controller
         $category = Category::find($id);// Tìm category theo ID, nếu không có thì báo lỗi 404
 
         if (!$category) {
-            return redirect()->route('admin.category.index')->with('error', 'Category not found.');
+            return redirect()->route('admin.category.index')->with('error', 'Không tìm thấy danh mục.');
         }
         return view('admin.category.edit', compact('category'));
     }
@@ -77,10 +74,9 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
         $category->save();
 
-        return redirect()->route('admin.category.index')->with('success', 'Category updated successfully!');
+        return redirect()->route('admin.category.index')->with('success', 'Đã cập nhật danh mục thành công!');
     }
 
     /**

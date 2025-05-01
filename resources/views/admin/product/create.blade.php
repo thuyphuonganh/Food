@@ -13,10 +13,6 @@
                 @error('name')<small class="text-danger">{{ $message }}</small>@enderror
             </div>
 
-            <div class="form-group">
-                <label for="slug">Product Slug (Auto-generated)</label>
-                <input type="text" name="slug" class="form-control" placeholder="Auto-generated from name" value="{{ old('slug') }}" readonly>
-            </div>
 
             <div class="form-group">
                 <label for="description">Product Description</label>
@@ -48,8 +44,8 @@
             <div class="form-group">
                 <label for="status">Product Status</label>
                 <select name="status" class="form-control">
-                    <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
-                    <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                    <option value="in-stock" {{ old('status') == 'in-stock' ? 'selected' : '' }}>Còn hàng</option>
+                    <option value="out-stock" {{ old('status') == 'out-stock' ? 'selected' : '' }}>Hết hàng</option>
                 </select>
             </div>
 

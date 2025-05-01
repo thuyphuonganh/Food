@@ -1,21 +1,15 @@
 <?php
-
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $table = 'orders'; // Đảm bảo tên bảng là 'orders'
+    use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'name',
-        'phone',
-        'address',
-        'note',
-        'status',
-        'total',
+        'fullName', 'phoneNumber', 'address', 'description', 'status', 'totalAmount', 'user_id'
     ];
 
     public function orderDetails()
