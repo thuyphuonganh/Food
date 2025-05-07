@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('customer.layouts.master')
 
 @section('title', 'Danh Sách Đơn Hàng')
 
 @section('content')
-    <div class="row">
+    <div class="container">
+        <div class="row mt-5">
         <div class="col-md-12">
             <div class="card shadow-sm mb-0">
                 <div class="card-header bg-light text-center">
@@ -48,4 +49,6 @@
             </div>
         </div>
     </div>
+    </div>
+
 @endsection

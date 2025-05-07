@@ -37,4 +37,7 @@ class DashboardController extends Controller
         return view('customer.product-detail', compact('product'));
     }
 
+    function infor() {
+        return view('customer.infor');
+    }
 }

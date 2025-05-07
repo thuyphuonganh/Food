@@ -68,7 +68,7 @@
                 <div class="d-flex mt-3 text-des">
                     <ul class="list-unstyled me-auto">
                         <li>✔ 100% bông trắng tinh khiết</li>
-                        <li>✔ Bảo hành đường chỉ trọn đời</li>
+                        <li>✔ Bảo hành đường chỉ 1 tháng</li>
                         <li>✔ Miễn phí Gói quà</li>
                         <li>✔ Miễn phí Nén chân không gấu</li>
                     </ul>
@@ -157,17 +157,9 @@
             </div>
         </div>
 
-        <nav class="mt-5">
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home"
-                    role="tab" aria-controls="nav-home" aria-selected="true">THÔNG TIN SẢN PHẨM</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile"
-                    role="tab" aria-controls="nav-profile" aria-selected="false">HƯỚNG DẪN MUA HÀNG</a>
-                <a class="nav-item nav-link" id="nav-contact-tab" data-bs-toggle="tab" href="#nav-contact"
-                    role="tab" aria-controls="nav-contact" aria-selected="false">BẢO HÀNH</a>
-            </div>
-        </nav>
+
         <div class="tab-content" id="nav-tabContent">
+            <span>THÔNG TIN SẢN PHẨM:</span>
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <p class="description-product mt-2 ms-2">
                     {{ $product->description }}

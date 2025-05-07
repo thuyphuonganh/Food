@@ -15,7 +15,8 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('search');
 // Product Detail
 Route::get('/dashboard/product-detail/{id}', [DashboardController::class, 'productDetail'])->name('productDetail');
-
+// Infor
+Route::get('/dashboard/infor', [DashboardController::class, 'infor'])->name('infor');
 // User
 Route::middleware('auth', 'verified')->group(function () {
     // Dashboard

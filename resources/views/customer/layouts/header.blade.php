@@ -10,21 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active header" aria-current="page" href="{{ route('home') }}">HOME</a>
+                    <a class="nav-link active header" aria-current="page" href="{{ route('home') }}">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active header" href="#">PRODUCTS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active header" href="#" aria-disabled="true">ABOUT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active header" href="#" tabindex="-1" aria-disabled="true">CONTACT</a>
+                    <a class="nav-link active header" aria-current="page" href="{{ route('infor') }}">VỀ CHÚNG TÔI</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
+                    <span>GIỎ HÀNG</span>
                     <a href="{{ route('cart.index') }}" class="nav-link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-shopping-cart">
@@ -50,10 +45,10 @@
                                     <li><a class="dropdown-item" href="#"
                                             onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
                                 @else
-                                    <li><a class="dropdown-item" href="{{ route('admin.login') }}">Sign in for admin</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('login') }}">Sign in for customer</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('admin.login') }}">Đăng nhập cho quản trị viên</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('login') }}">Đăng nhập cho khách hàng</a></li>
                                     @if (Route::has('register'))
-                                        <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('register') }}">Đăng ký</a></li>
                                     @endif
 
                                 @endauth

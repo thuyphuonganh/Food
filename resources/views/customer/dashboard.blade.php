@@ -83,7 +83,7 @@
             <div class="d-flex align-items-center justify-content-center">
                 <input class="form-control mt-3" type="search" name="search" placeholder="Tìm kiếm theo tên sản phẩm"
                     aria-label="Search" style="width: 30%" value="{{ request('search') }}">
-                <button class="btn btn-primary ms-2 mt-3" type="submit">Search</button>
+                <button class="btn btn-primary ms-2 mt-3" type="submit">Tìm kiếm</button>
             </div>
             <div class="d-flex">
                 <select class="form-select me-auto mt-3" name="category" id="exampleSelect">
@@ -92,12 +92,12 @@
                         <option @selected(request('category') == $category->id) value="{{ $category->id }}">
                             {{ $category->name }}</option>
                     @empty
-                        <option value="">No categories available</option>
+                        <option value="">Không có danh mục hiển thị</option>
                     @endforelse
                 </select>
                 <select class="form-select ms-auto mt-3" name="order" id="exampleSelect" onchange="this.form.submit()">
-                    <option @selected(request('order') == 'asc') value="asc">Filter by price: Low to high</option>
-                    <option @selected(request('order') == 'desc') value="desc">Filter by price: High to low</option>
+                    <option @selected(request('order') == 'asc') value="asc">Lọc theo giá: thấp tới cao</option>
+                    <option @selected(request('order') == 'desc') value="desc">Lọc theo giá: cao tới thấp</option>
                 </select>
             </div>
 
@@ -135,7 +135,7 @@
                 </div>
 
             @empty
-                <h5>Not Product</h5>
+                <h5>Không có sản phẩm</h5>
             @endforelse
         </div>
 
