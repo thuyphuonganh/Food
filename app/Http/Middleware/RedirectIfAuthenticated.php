@@ -50,15 +50,18 @@ class RedirectIfAuthenticated
      */
     protected function defaultRedirectUri(?string $guard): string
     {
-
         $routes = [
             'admin' => 'admin.dashboard',
-            'web' => 'dashboard'
+            'web' => 'user.profile' // Sửa từ 'dashboard' thành 'user.profile'
         ];
 
         if (array_key_exists($guard, $routes)) {
             $routeName = $routes[$guard];
             if (Route::has($routeName)) {
+                // Với guard 'web', chuyển hướng đến route 'user.profile' với ID người dùng hiện tại
+                if ($guard === 'web' || $guard === null) {
+                    return route('user.profile', Auth::id());
+                }
                 return route($routeName);
             }
         }

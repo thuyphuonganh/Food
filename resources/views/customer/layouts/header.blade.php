@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand align-items-center header" href="#">
             DuDu Store
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -10,21 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                    <a class="nav-link active header" aria-current="page" href="{{ route('home') }}">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">PRODUCTS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-disabled="true">ABOUT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">CONTACT</a>
+                    <a class="nav-link active header" aria-current="page" href="{{ route('infor') }}">VỀ CHÚNG TÔI</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
+                    <span>GIỎ HÀNG</span>
                     <a href="{{ route('cart.index') }}" class="nav-link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-shopping-cart">
@@ -42,24 +37,26 @@
                             <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
                             <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
                         </svg>
+                        <ul class="dropdown-menu">
+                            @if (Route::has('login'))
+                                @auth
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Thông tin khách hàng</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('orders.index') }}">Lịch sử đơn hàng</a></li>
+                                    <li><a class="dropdown-item" href="#"
+                                            onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
+                                @else
+                                    <li><a class="dropdown-item" href="{{ route('admin.login') }}">Đăng nhập cho quản trị viên</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('login') }}">Đăng nhập cho khách hàng</a></li>
+                                    @if (Route::has('register'))
+                                        <li><a class="dropdown-item" href="{{ route('register') }}">Đăng ký</a></li>
+                                    @endif
+
+                                @endauth
+                            @endif
+
+                        </ul>
                     </a>
-                    <ul class="dropdown-menu mt-5">
-                        @if (Route::has('login'))
-                            @auth
-                                <li><a class="dropdown-item" href="">Thông tin khách hàng</a></li>
-                                <li><a class="dropdown-item" href="#"
-                                        onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
-                            @else
-                                <li><a class="dropdown-item" href="#">Sign in for admin</a></li>
-                                <li><a class="dropdown-item" href="#">Sign in for customer</a></li>
-                                @if (Route::has('register'))
-                                    <li><a class="dropdown-item" href="#" onclick="">Register</a></li>
-                                @endif
 
-                            @endauth
-                        @endif
-
-                    </ul>
                 </li>
             </ul>
         </div>
