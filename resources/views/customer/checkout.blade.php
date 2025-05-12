@@ -32,19 +32,19 @@
                 <form action="{{ route('checkout.store') }}" method="POST" id="checkout-form">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">FullName</label>
+                        <label for="name" class="form-label">Họ và tên</label>
                         <input type="text" id="name" class="form-control" name="name">
                     </div>
                     <div class="mb-3">
-                        <label for="phone" class="form-label">PhoneNumber</label>
+                        <label for="phone" class="form-label">Số điện thoại</label>
                         <input type="text" id="phone" class="form-control" name="phone">
                     </div>
                     <div class="mb-3">
-                        <label for="phone" class="form-label">Address</label>
+                        <label for="address" class="form-label">Địa chỉ</label>
                         <input type="text" id="address" class="form-control" name="address">
                     </div>
                     <div class="mb-3">
-                        <label for="address" class="form-label">Description</label>
+                        <label for="description" class="form-label">Mô tả</label>
                         <textarea class="form-control" rows="2" name="description"></textarea>
                     </div>
 

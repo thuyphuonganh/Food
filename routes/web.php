@@ -15,12 +15,13 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('search');
 // Product Detail
 Route::get('/dashboard/product-detail/{id}', [DashboardController::class, 'productDetail'])->name('productDetail');
-// Infor
-Route::get('/dashboard/infor', [DashboardController::class, 'infor'])->name('infor');
 // User
 Route::middleware('auth', 'verified')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Infor
+    Route::get('/dashboard/infor', [DashboardController::class, 'infor'])->name('infor');
 
     // Cart
     Route::resource('/dashboard/cart', CartController::class);

@@ -266,7 +266,7 @@
         function addProductToCart(productId) {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const baseUrl = window.location.origin;
-            const url = baseUrl + "/shop/public/dashboard/cart"
+            const url = baseUrl + "/Shop/public/dashboard/cart"
             const formData = new FormData();
             formData.append('_token', csrfToken);
             formData.append('productId', productId);
@@ -279,8 +279,9 @@
                 })
                 .then(response => {
                     if (response.ok) {
-                        window.location.href = url;
+
                     }
+                    window.location.href = url;
                 })
                 .then(data => console.log(data))
                 .catch(error => console.error(error));

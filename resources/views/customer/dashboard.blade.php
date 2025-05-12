@@ -140,9 +140,8 @@
         </div>
 
         <div class="mt-3">
-            {{ $products->links() }}
+            {{ $products->appends(['order' => request('order'), 'category' => request('category')])->links() }}
         </div>
-
 
     </div>
 @endsection

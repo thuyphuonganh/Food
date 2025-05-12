@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-5">
-                                            <h3>Log in Admin</h3>
+                                            <h3>Login Admin</h3>
                                         </div>
                                     </div>
                                 </div>
