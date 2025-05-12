@@ -59,7 +59,7 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu"> <!--D:\xampp\htdocs\Doan2\Shop\public\images -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('ad_assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('images/admin.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">DUDU</span>
             </a>
           </li>
@@ -77,13 +77,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('ad_assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ asset('images/admin.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>DUDU</p>
-          <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-circle text-success"></i> Logout
-          </a>
           <form method="POST" action="{{ route('admin.logout') }}">
               @csrf
 
@@ -157,10 +154,6 @@
       <div class="box">
         <div class="box-body">
           @yield('main')
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
         </div>
         <!-- /.box-footer-->
       </div>

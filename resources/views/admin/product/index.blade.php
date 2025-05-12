@@ -3,10 +3,6 @@
 @section('main')
 
 <form action="" method="GET" class="form-inline" role="form">
-    <div class="form-group">
-        <input type="text" name="search" class="form-control" placeholder="Search product..." value="{{ request()->search }}">
-    </div>
-    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
     <a href="{{ route('admin.product.create') }}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add new</a>
 </form>
 
@@ -46,7 +42,7 @@
             </td>
             <td class="text-right">
                 <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-  
+
             </td>
         </tr>
         @endforeach

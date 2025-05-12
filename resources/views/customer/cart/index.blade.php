@@ -143,7 +143,7 @@
         function addProductToCart(productId) {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const baseUrl = window.location.origin;
-            const url = baseUrl + "/shop/public/dashboard/cart"
+            const url = baseUrl + "/Shop/public/dashboard/cart"
             const formData = new FormData();
             formData.append('_token', csrfToken);
             formData.append('productId', productId);
@@ -166,7 +166,7 @@
         function removeProductToCart(productId) {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const baseUrl = window.location.origin;
-            const url = baseUrl + "/shop/public/dashboard/cart"
+            const url = baseUrl + "/Shop/public/dashboard/cart"
             const formData = new FormData();
             formData.append('_token', csrfToken);
             formData.append('productId', productId);
@@ -189,7 +189,7 @@
         function deleteProductToCart(productId) {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const baseUrl = window.location.origin;
-            const url = baseUrl + `/shop/public/dashboard/cart/delete/${productId}`
+            const url = baseUrl + `/Shop/public/dashboard/cart/delete/${productId}`
             const formData = new FormData();
             formData.append('_token', csrfToken);
 

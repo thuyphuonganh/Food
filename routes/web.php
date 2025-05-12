@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\DashboardController;
@@ -15,13 +16,14 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('search');
 // Product Detail
 Route::get('/dashboard/product-detail/{id}', [DashboardController::class, 'productDetail'])->name('productDetail');
+
+    // Infor
+    Route::get('/dashboard/infor', [DashboardController::class, 'infor'])->name('infor');
+
 // User
 Route::middleware('auth', 'verified')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    // Infor
-    Route::get('/dashboard/infor', [DashboardController::class, 'infor'])->name('infor');
 
     // Cart
     Route::resource('/dashboard/cart', CartController::class);
@@ -46,9 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 require __DIR__ . '/auth.php';
 

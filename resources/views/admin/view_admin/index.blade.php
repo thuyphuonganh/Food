@@ -12,7 +12,7 @@
                         <h3>{{ $productCount }}</h3>
                         <p>Tổng số sản phẩm</p>
                     </div>
-                    <div class="icon"> 
+                    <div class="icon">
                         <i class="fas fa-box"></i>
                     </div>
                     <a href="{{ route('admin.product.index') }}" class="small-box-footer">
@@ -47,9 +47,9 @@
                     <div class="icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
-                        Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
-                    </a>
+                    <p class="small-box-footer">
+                        Khách hàng
+                    </p>
                 </div>
             </div>
             <!-- Revenue Today Card -->
@@ -153,8 +153,8 @@
 </section>
 
 <!-- Thêm dữ liệu cho JavaScript -->
-<div id="revenue-data" 
-     data-daily-revenue="{{ json_encode($dailyRevenueByMonth) }}" 
+<div id="revenue-data"
+     data-daily-revenue="{{ json_encode($dailyRevenueByMonth) }}"
      data-current-month="{{ date('n') }}">
 </div>
 
