@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(["middleware" => "guest:admin", "prefix" => "admin", "as" => "admin."],function () {
@@ -77,5 +78,6 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     //Route::get('orders/{order}/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
     Route::post('/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
     // View
-    Route::get('/view_admin', [AdminController::class, 'index'])->name('view_admin.index');
+    //Route::get('/view_admin', [AdminController::class, 'index'])->name('view_admin.index');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
