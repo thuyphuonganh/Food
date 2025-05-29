@@ -7,7 +7,7 @@
     </form>
     <div class="container mt-5">
         <a href="{{ route('dashboard') }}">
-            <button style="height: 2.5rem;" class="btn btn-primary">
+            <button style="height: 2.5rem;" class="btn btn-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left">
@@ -33,11 +33,12 @@
             <tbody>
                 @forelse ($cartItems as $item)
                     <tr>
-                        <th scope="row">
+                        <td>
                             <div class="d-flex align-items-center">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="product" class="product-checkbox form-check-input" id="customCheck1"
-                                        value="{{ $item->product_id }}" data-name="{{ $item->product->name }}"
+                                    <input type="checkbox" name="product" class="product-checkbox form-check-input"
+                                        id="customCheck1" value="{{ $item->product_id }}"
+                                        data-name="{{ $item->product->name }}"
                                         data-image="{{ asset($item->product->image) }}" data-price="{{ $item->price }}"
                                         data-quantity="{{ $item->quantity }}">
                                 </div>
@@ -47,8 +48,8 @@
                                     {{ $item->product->name }}
                                 </span>
                             </div>
-                        </th>
-                        <td style="text-align: center; vertical-align: middle;">
+                        </td>
+                        <td style=" text-align: center; vertical-align: middle;">
                             <div class="d-flex align-items-center">
                                 {{ $item->price }}đ
                             </div>
@@ -69,7 +70,7 @@
                         </td>
                         <td style="text-align: center; vertical-align: middle; ">
                             <div class="d-flex">
-                                <div class="image" onclick="deleteProductToCart({{ $item->id }})">
+                                <div onclick="deleteProductToCart({{ $item->id }})">
                                     <svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="currentColor"
                                         class="icon icon-tabler icons-tabler-filled icon-tabler-square-x">
@@ -80,6 +81,7 @@
                                 </div>
                             </div>
                         </td>
+
                     </tr>
                 @empty
                     <h1>EMPTY CART</h1>
@@ -94,7 +96,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-end mt-3">
-            <button class="btn btn-primary" onclick="buy()">
+            <button class="btn btn-success" onclick="buy()">
                 THANH TOÁN
             </button>
         </div>
