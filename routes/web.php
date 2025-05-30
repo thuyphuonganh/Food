@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
 
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+//Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 require __DIR__ . '/auth.php';
 

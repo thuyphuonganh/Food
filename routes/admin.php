@@ -80,4 +80,5 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     // View
     //Route::get('/view_admin', [AdminController::class, 'index'])->name('view_admin.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 });

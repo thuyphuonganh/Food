@@ -12,9 +12,15 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all(); // Lấy tất cả danh mục từ database
+
+        if (isset($request->search)) {
+            $keyword = $request->input('search');
+            $categories = Category::where('name', 'LIKE', '%' . $keyword . '%')->get();
+        }
+
         return view('admin.category.index', compact('categories'));
     }
 
@@ -59,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);// Tìm category theo ID, nếu không có thì báo lỗi 404
+        $category = Category::find($id); // Tìm category theo ID, nếu không có thì báo lỗi 404
 
         if (!$category) {
             return redirect()->route('admin.category.index')->with('error', 'Không tìm thấy danh mục.');
