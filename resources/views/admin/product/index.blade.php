@@ -1,63 +1,83 @@
-@extends('admin.dashboard')
-@section('title', 'Product Manager')
-@section('main')
+@extends('admin.layouts.master')
 
-<form action="" method="GET" class="form-inline" role="form">
-    <a href="{{ route('admin.product.create') }}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add new</a>
-</form>
+@section('search')
+    <form action="" class="d-flex ms-3" method="GET">
+        <input class="form-control me-1" type="search" name="search" placeholder="Nhập sản phẩm" aria-label="Search"
+            style="background-color: #F8F9FC; border: 0.5px solid rgb(238, 237, 237)" value="{{ request('search') }}">
+        <button class="btn btn-primary" type="submit">
+            <svg style="width: 20px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                <path d="M21 21l-6 -6" />
+            </svg>
+        </button>
+    </form>
+@endsection
 
-<br>
+@section('content')
+    <div class="container-fluid">
+        <div class="mt-2 ms-2">
+            <h1>Danh sách sản phẩm</h1>
+            <form action="" method="GET" class="form-inline" role="form">
+                <a href="{{ route('admin.product.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>
+                    Add new</a>
+            </form>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th class="text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($products as $key => $product)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ number_format($product->price, 0, ',', '.') }} đ</td>
+                            <td>
+                                @if (!empty($product->image))
+                                    <img src="{{ asset($product->image) }}" width="50">
+                                    <!-- Hiển thị ảnh từ thư mục public/images -->
+                                @else
+                                    <span>No image</span>
+                                @endif
+                            </td>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th class="text-right">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($products as $key => $product)
-        <tr>
-            <td>{{ $key + 1 }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ number_format($product->price, 0, ',', '.') }} đ</td>
-            <td>
-                @if (!empty($product->image))
-                    <img src="{{ asset($product->image) }}" width="50"> <!-- Hiển thị ảnh từ thư mục public/images -->
-                @else
-                    <span>No image</span>
-                @endif
-            </td>
+                            <td>{{ $product->category->name ?? 'Uncategorized' }}</td>
+                            <td>
+                                <span class="">
+                                    {{ ucfirst($product->status) }}
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                        <path d="M16 5l3 3" />
+                                    </svg>
+                                </a>
 
-            <td>{{ $product->category->name ?? 'Uncategorized' }}</td>
-            <td>
-                <span class="badge badge-{{ $product->status == 'in-stock' ? 'success' : 'secondary' }}">
-                    {{ ucfirst($product->status) }}
-                </span>
-            </td>
-            <td class="text-right">
-                <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-                <!-- Centered Pagination -->
-                <div class="d-flex justify-content-center mt-4">
-                    {{ $products->links('pagination::bootstrap-4') }}
-                </div>
-
-                @if ($products->total() > 0)
-                    <div class="text-center mt-2 small text-muted">
-                        Hiển thị {{ $products->firstItem() }} đến {{ $products->lastItem() }} trong tổng số {{ $products->total() }} kết quả
-                    </div>
-                @endif
-
-
-@stop
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center mt-4">
+                {{ $products->links('pagination::bootstrap-4') }}
+            </div>
+        </div>
+    </div>
+@endsection

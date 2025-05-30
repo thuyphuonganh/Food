@@ -142,7 +142,7 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse">
                         <li class="sidebar-item ms-3">
-                            <a href="" class="sidebar-link">Xem sản phẩm</a>
+                            <a href="{{ route('admin.product.index') }}" class="sidebar-link">Xem sản phẩm</a>
                         </li>
                         <li class="sidebar-item ms-3">
                             <a href="" class="sidebar-link">Thêm sản phẩm</a>

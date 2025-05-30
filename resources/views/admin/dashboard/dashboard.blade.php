@@ -61,11 +61,6 @@
         const values = Object.values(revenueData);
         const ctx = document.getElementById('myChart');
 
-
-
-        console.log(labels);
-        console.log(values);
-
         new Chart(ctx, {
             type: 'bar',
             data: {

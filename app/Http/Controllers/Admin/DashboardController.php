@@ -20,8 +20,13 @@ class DashboardController extends Controller
         $customerCount = User::count();
         $totalRevenue = Order::where('status', 'completed')->sum('total_amount');
 
-        $start = Carbon::parse($request->start_date)->startOfDay();
-        $end = Carbon::parse($request->end_date)->endOfDay();
+        $dayFirstOfMonth = $request->start_date ? $request->start_date : Carbon::now()->startOfMonth();
+        $dayEndOfMonth = $request->end_date ? $request->end_date : Carbon::now()->endOfMonth();
+
+        $start = Carbon::parse($dayFirstOfMonth)->startOfDay();
+        $end = Carbon::parse($dayEndOfMonth)->endOfDay();
+
+        //return $request->end_date;
 
         $revenues = DB::table('orders')
             ->selectRaw('DATE(created_at) as date, SUM(total_amount) as revenue')
@@ -41,5 +46,5 @@ class DashboardController extends Controller
         return view('admin.dashboard.dashboard', compact('productCount', 'orderCount', 'customerCount', 'totalRevenue', 'allDates'));
     }
 
-    
+
 }

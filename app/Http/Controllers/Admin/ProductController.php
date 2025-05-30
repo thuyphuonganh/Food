@@ -7,15 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
+use App\Traits\FileUpload;
 
 class ProductController extends Controller
 {
     /**
      * Hiển thị danh sách sản phẩm
      */
-    public function index()
+
+    use FileUpload;
+    public function index(Request $request)
     {
-        $products = Product::with('category')->paginate(15);
+        $keyword = $request->search ?? '';
+        $products = Product::where('name', 'like', '%' . $keyword . '%')
+            ->paginate(15);
         return view('admin.product.index', compact('products'));
     }
 
@@ -37,23 +42,36 @@ class ProductController extends Controller
             'name' => 'required|max:255',
             'price' => 'required|numeric|min:50000',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'description' => 'nullable',
             'status' => 'required|in:in-stock,out-stock',
             'category_id' => 'required|exists:categories,id'
         ]);
 
-        $data = $request->except('image');
+        $thumbnailPath = $this->uploadFile($request->file('image'));
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->image = $thumbnailPath;
+        $product->status = $request->status;
+        $product->category_id = $request->category_id;
+        $product->save();
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = $file->getClientOriginalName();
+        //return $request->all();
 
-            // Lưu vào đúng đường dẫn bạn yêu cầu
-            $file->move('D:/xampp/htdocs/Doan2/Shop/public/images', $filename);
+        // $data = $request->except('image');
 
-            $data['image'] = 'images/' . $filename;
-        }
+        // if ($request->hasFile('image')) {
+        //     $file = $request->file('image');
+        //     $filename = $file->getClientOriginalName();
 
-        Product::create($data);
+        //     // Lưu vào đúng đường dẫn bạn yêu cầu
+        //     $file->move('D:/xampp/htdocs/Doan2/Shop/public/images', $filename);
+
+        //     $data['image'] = 'images/' . $filename;
+        // }
+
+        // Product::create($data);
 
         return redirect()->route('admin.product.index')->with('success', 'Sản phẩm đã được tạo thành công!');
     }
