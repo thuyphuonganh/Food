@@ -57,22 +57,6 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->save();
 
-        //return $request->all();
-
-        // $data = $request->except('image');
-
-        // if ($request->hasFile('image')) {
-        //     $file = $request->file('image');
-        //     $filename = $file->getClientOriginalName();
-
-        //     // Lưu vào đúng đường dẫn bạn yêu cầu
-        //     $file->move('D:/xampp/htdocs/Doan2/Shop/public/images', $filename);
-
-        //     $data['image'] = 'images/' . $filename;
-        // }
-
-        // Product::create($data);
-
         return redirect()->route('admin.product.index')->with('success', 'Sản phẩm đã được tạo thành công!');
     }
 
@@ -103,51 +87,19 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Xóa ảnh cũ nếu có
-        // if (!empty($product->image)) {
-        //     $oldImagePath = 'D:/xampp/htdocs/Doan2/Shop/public/' . $product->image;
-        //     if (File::exists($oldImagePath)) {
-        //         File::delete($oldImagePath);
-        //     }
-        // }
-
         $product->name = $request->name;
-        $product->description = $request->description;
         $product->price = $request->price;
+        $product->description = $request->description;
         $product->status = $request->status;
         $product->category_id = $request->category_id;
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = $file->getClientOriginalName();
-
-            $file->move(public_path('images'), $filename);
-
-
-            $product->image = 'images/' . $filename;
+            $this->deleteFile($product->image);
+            $thumbnailPath = $this->uploadFile($request->file('image'));
+            $product->image = $thumbnailPath;
         }
-
         $product->save();
 
         return redirect()->route('admin.product.index')->with('success', 'Sản phẩm đã được cập nhật thành công!');
     }
-
-    /**
-     * Xóa sản phẩm khỏi CSDL
-     */
-    // public function destroy($id)
-    // {
-    //     $product = Product::findOrFail($id);
-
-    //     if (!empty($product->image)) {
-    //         $imagePath = 'D:/xampp/htdocs/Doan2/Shop/public/' . $product->image;
-    //         if (File::exists($imagePath)) {
-    //             File::delete($imagePath);
-    //         }
-    //     }
-
-    //     $product->delete();
-
-    //     return redirect()->route('admin.product.index')->with('success', 'Product deleted successfully!');
-    // }
 }

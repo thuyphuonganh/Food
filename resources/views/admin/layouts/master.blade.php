@@ -127,8 +127,8 @@
                 {{-- <li class="sidebar-header">
                     Pages
                 </li> --}}
-                <li class="sidebar-item">
-                    <a href="" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                {{-- <li class="sidebar-item">
+                    <a href="{{ route('admin.product.index') }}" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#auth" aria-expanded="true" aria-controls="auth">
                         <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -145,12 +145,25 @@
                             <a href="{{ route('admin.product.index') }}" class="sidebar-link">Xem sản phẩm</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="" class="sidebar-link">Thêm sản phẩm</a>
+                            <a href="{{ route('admin.product.create') }}" class="sidebar-link">Thêm sản phẩm</a>
                         </li>
                         <li class="sidebar-item ms-3">
-                            <a href="" class="sidebar-link">Sửa sản phẩm</a>
+                            <a href="{{ route('admin.product.edit') }}" class="sidebar-link">Sửa sản phẩm</a>
                         </li>
                     </ul>
+                </li> --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.product.index') }}" class="sidebar-link">
+                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-producthunt">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10 16v-8h2.5a2.5 2.5 0 1 1 0 5h-2.5" />
+                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                        </svg>
+                        <span>Sản phẩm</span>
+                    </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">

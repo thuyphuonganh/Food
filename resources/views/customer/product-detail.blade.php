@@ -6,7 +6,7 @@
             <input type="hidden" name="selected_products" id="selected-products">
         </form>
 
-        <h4 class="mt-3 mb-3">iPhone 16 Pro Max (256GB) - Chính hãng VN/A</h4>
+        <h4 class="mt-3 mb-3">{{ $product->name }} - Chính hãng VN/A</h4>
         <div class="d-flex">
             <div class="card col-xl-7 col-lg-7 me-3 d-flex justify-content-center align-items-center" style="height: 400px;">
                 <img src="{{ asset($product->image) }}" alt="" style="height: 350px;">

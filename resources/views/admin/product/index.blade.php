@@ -19,10 +19,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="mt-2 ms-2">
-            <h1>Danh sách sản phẩm</h1>
+            <h2>Danh sách sản phẩm</h2>
             <form action="" method="GET" class="form-inline" role="form">
                 <a href="{{ route('admin.product.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>
-                    Add new</a>
+                    Thêm sản phẩm</a>
             </form>
             <table class="table table-hover">
                 <thead>
