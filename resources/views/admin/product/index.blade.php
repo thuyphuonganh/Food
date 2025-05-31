@@ -20,11 +20,19 @@
     <div class="container-fluid">
         <div class="mt-2 ms-2">
             <h2>Danh sách sản phẩm</h2>
-            <form action="" method="GET" class="form-inline" role="form">
-                <a href="{{ route('admin.product.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>
-                    Thêm sản phẩm</a>
+            <form action="" method="GET" class="form-inline mt-3" role="form">
+                <a href="{{ route('admin.product.create') }}" class="btn btn-primary pull-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 5l0 14" />
+                        <path d="M5 12l14 0" />
+                    </svg>
+                    Thêm sản phẩm
+                </a>
             </form>
-            <table class="table table-hover">
+            <table class="table table-hover mt-3">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -75,8 +83,8 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center mt-4">
-                {{ $products->links('pagination::bootstrap-4') }}
+            <div class="row mt-3">
+                {{ $products->appends(['search' => request('search')])->links() }}
             </div>
         </div>
     </div>

@@ -151,55 +151,5 @@
             {{ $products->appends(['order' => request('order'), 'category' => request('category')])->links() }}
         </div>
     </div>
-    {{-- <div class="container mt-2 animate-slide-up">
-        <form action="{{ route('search') }}" method="GET" class="">
-            <div class="d-flex align-items-center justify-content-center">
-                <input class="form-control mt-3" type="search" name="search" placeholder="Tìm kiếm theo tên sản phẩm"
-                    aria-label="Search" style="width: 30%" value="{{ request('search') }}">
-                <button class="btn btn-primary ms-2 mt-3" type="submit">Tìm kiếm</button>
-            </div>
-            <div class="d-flex">
-                <select class="form-select me-auto mt-3" name="category" id="exampleSelect">
-                    <option value="">DANH MỤC SẢN PHẨM</option>
-                    @forelse ($categories as $category)
-                        <option @selected(request('category') == $category->id) value="{{ $category->id }}">
-                            {{ $category->name }}</option>
-                    @empty
-                        <option value="">Không có danh mục hiển thị</option>
-                    @endforelse
-                </select>
-                <select class="form-select ms-auto mt-3" name="order" id="exampleSelect" onchange="this.form.submit()">
-                    <option @selected(request('order') == 'asc') value="asc">Lọc theo giá: thấp tới cao</option>
-                    <option @selected(request('order') == 'desc') value="desc">Lọc theo giá: cao tới thấp</option>
-                </select>
-            </div>
-
-        </form>
-
-
-        <div class="row mt-3 align-items-center row-all">
-            @forelse ($products as $product)
-                <div class="d-flex col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                    <div class="card card-hover shadow mb-3 me-1">
-                        <a href="{{ route('productDetail', ['id' => $product->id]) }}" style="text-decoration: none">
-                            <img src="{{ asset($product->image) }}" class="card-img-top image-card d-block mx-auto"
-                                alt="...">
-                            <div class="card-body mt-2">
-                                <h5 class="card-title text-center text-truncate-2 name">{{ $product->name }}</h5>
-                                <p class="card-text text-center price">{{ $product->price }}đ</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-            @empty
-                <h5>Không có sản phẩm</h5>
-            @endforelse
-        </div>
-
-        <div class="mt-3">
-            {{ $products->appends(['order' => request('order'), 'category' => request('category')])->links() }}
-        </div>
-
-    </div> --}}
+    
 @endsection

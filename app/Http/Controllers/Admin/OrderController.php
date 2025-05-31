@@ -8,17 +8,19 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with('user')->get();
-    
-        return view('admin.orders.index', compact('orders'));
+        $keyword = $request->search ?? '';
+        $orders = Order::where('phoneNumber', 'like', '%' . $keyword . '%')
+            ->paginate(15);
+
+        return view('admin.order.index', compact('orders'));
     }
 
     public function show($id)
     {
         $order = Order::with(['orderDetails.product', 'user'])->findOrFail($id);
-        return view('admin.orders.show', compact('order'));
+        return view('admin.order.show', compact('order'));
     }
 
     public function updateStatus(Request $request, $id)

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="mt-2 ms-2">
-            <h1>Dashboard</h1>
+            <h2>Dashboard</h2>
             <div class="d-flex row">
                 <div class="card mt-2 me-2 col-lg-3 col-md-4" style="width: 18rem;">
                     <div class="card-body">
@@ -13,23 +13,23 @@
                 </div>
                 <div class="card mt-2 me-2 col-lg-3 col-md-4" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title" style="color: #4E73DF">Tổng số đơn hàng</h5>
+                        <h5 class="card-title" style="color: #4994ba">Tổng số đơn hàng</h5>
                         <h5 class="card-text">{{ $orderCount }}</h5>
-                        <span class="card-text" style="color: #4E73DF">Xem chi tiết</span>
+                        <span class="card-text" style="color: #4994ba">Xem chi tiết</span>
                     </div>
                 </div>
                 <div class="card mt-2 me-2 col-lg-3 col-md-4" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title" style="color: #4E73DF">Tổng số khách hàng</h5>
+                        <h5 class="card-title" style="color: #077983">Tổng số khách hàng</h5>
                         <h5 class="card-text">{{ $customerCount }}</h5>
-                        <span class="card-text" style="color: #4E73DF">Xem chi tiết</span>
+                        <span class="card-text" style="color: #077983">Xem chi tiết</span>
                     </div>
                 </div>
                 <div class="card mt-2 col-lg-3 col-md-4" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title" style="color: #4E73DF">Tổng doanh thu</h5>
+                        <h5 class="card-title" style="color: #14864b">Tổng doanh thu</h5>
                         <h5 class="card-text">{{ $totalRevenue }}đ</h5>
-                        <span class="card-text" style="color: #4E73DF">Xem chi tiết</span>
+                        <span class="card-text" style="color: #14864b">Xem chi tiết</span>
                     </div>
                 </div>
 

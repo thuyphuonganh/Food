@@ -19,7 +19,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="mt-2 ms-2">
-            <h1>Danh mục</h1>
+            <h2>Danh mục</h2>
             <form action="{{ route('admin.category.store') }}" method="POST" role="form">
                 @csrf <!-- Token bảo mật CSRF -->
 

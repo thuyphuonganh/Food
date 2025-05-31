@@ -73,8 +73,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     // Quản lý orders
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show'); // /admin/orders/{order}
+    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show'); // /admin/orders/{order}
     //Route::get('orders/{order}/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
     Route::post('/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
     // View
