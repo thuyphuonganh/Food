@@ -138,9 +138,8 @@
                                 <a class="dropdown-item" href="{{ route('orders.index') }}">Lịch sử đơn hàng</a>
                                 <a class="dropdown-item" href="#" onclick="document.getElementById('myForm').submit()">Đăng xuất</a>
                             @else
-                                <a class="dropdown-item" href="{{ route('admin.login') }}">Đăng nhập cho quản trị viên</a>
-                                <a href="{{ route('login') }}" class="dropdown-item">Đăng nhập cho khách hàng</a>
-                                <a href="{{ route('register') }}" class="dropdown-item">Đăng ký cho khách hàng</a>
+                                <a href="{{ route('login') }}" class="dropdown-item">Đăng nhập</a>
+                                <a href="{{ route('register') }}" class="dropdown-item">Đăng ký</a>
                             @endauth
                         @endif
                     </div>

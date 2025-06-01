@@ -182,7 +182,7 @@
                 </li>
                 <li class="sidebar-item">
 
-                    <form id="logout-form" method="POST" action="{{ route('admin.logout') }}">
+                    <form id="logout-form" method="POST" action="{{ route('logout') }}">
                         @csrf
 
                     </form>
