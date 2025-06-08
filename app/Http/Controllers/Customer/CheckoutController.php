@@ -10,26 +10,42 @@ use App\Models\OrderDetail;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Exception;
+use Illuminate\Support\Facades\Redis;
 
 class CheckoutController extends Controller
 {
 
-
     public function index(Request $request)
     {
-        $selectedProducts = json_decode($request->input('selected_products'), true);
-        if (!$selectedProducts || empty($selectedProducts)) {
-            return redirect()->back()->with('error', 'Không có sản phẩm nào được chọn.');
+        try {
+            $selectedProducts = json_decode($request->input('selected_products'), true);
+            if (!$selectedProducts || empty($selectedProducts)) {
+
+                return response()->json([
+                    'message' => "Không có sản phẩm",
+                    'products' => $selectedProducts,
+                ], 404);
+            }
+            $total_amount = 0;
+            foreach ($selectedProducts as $product) {
+                $total_amount += $product['price'] * $product['quantity'];
+            }
+            return response()->json([
+                'message' => "Thông tin sản phẩm cần thanh toán",
+                'products' => $selectedProducts,
+                'totalAmount' => $total_amount
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Something went wrong',
+                'error' => $e->getMessage()
+            ], 404);
         }
-        $total_amount = 0;
-        foreach ($selectedProducts as $product) {
-            $total_amount += $product['price'] * $product['quantity'];
-        }
 
 
 
-
-        return view('customer.checkout', compact('selectedProducts', 'total_amount'));
+        //return view('customer.checkout', compact('selectedProducts', 'total_amount'));
     }
 
     public function checkout(Request $request)
@@ -37,14 +53,74 @@ class CheckoutController extends Controller
         return view('customer.checkout', compact('total_amount'));
     }
 
+    public function storeCod(Request $request)
+    {
+        try {
+            $products = json_decode($request->selected_products, true);
+            if (!$products || empty($products)) {
+                return response()->json([
+                    'message' => "Không có sản phẩm",
+                    'products' => $products,
+                ], 404);
+            }
 
+            $order = new Order();
+            $order->id = time() . "";
+            $order->fullName = $request->name;
+            $order->phoneNumber = $request->phone;
+            $order->address = $request->address;
+            $order->description = $request->description;
+            $order->status = 'pending';
+            $order->total_amount = $request->total_amount;
+            $order->user_id = Auth::user()->id;
+            $order->save();
+            $payment = new Payment();
+            $payment->order_id = $order->id;
+            $payment->payment_method = 'cod';
+            $payment->amount_paid = $order->total_amount;
+            foreach ($products as $product) {
+                $orderDetail = new OrderDetail();
+                $orderDetail->order_id = $order->id;
+                $orderDetail->product_id = $product['productId'];
+                $orderDetail->price = $product['price'];
+                $orderDetail->quantity = $product['quantity'];
+                $orderDetail->save();
+            }
+            $orderDetails = OrderDetail::where('order_id', $order->id)->get();
+            foreach ($orderDetails as $orderDetail) {
+                $cartItem = CartItem::where('product_id', $orderDetail->product_id)->first();
+                if ($cartItem) {
+                    $cartItem->delete();
+                }
+            }
+            $payment->status = 'failed';
+            $payment->save();
+            return response()->json([
+                'message' => "Đặt hàng thành công",
+                'order' => $order,
+                'payment' => $payment
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Something went wrong',
+                'error' => $e->getMessage()
+            ], 404);
+        }
+    }
 
     public function store(Request $request)
     {
         $products = json_decode($request->selected_products, true);
         if (!$products || empty($products)) {
-            return redirect()->back()->with('error', 'Không có sản phẩm nào được chọn.');
+            return response()->json([
+                'message' => "Không có sản phẩm",
+                'products' => $products,
+            ], 404);
         }
+        return response()->json([
+            'message' => "Cac sản phẩm",
+            'products' => $products,
+        ], 200);
 
         if ($request->payment_method == 'cod') {
             $order = new Order();

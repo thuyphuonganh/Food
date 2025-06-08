@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
+// Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/', function() {
+    return "AAA";
+})->name('home');
 
 Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('search');
 // Product Detail
