@@ -1,0 +1,13 @@
+/* Nhúng Bootstrap CSS */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Nếu muốn tùy chỉnh thêm thì ghi CSS dưới đây */
+body {
+    background-color: #f8f9fa;
+}
+
+.custom-card {
+    border: 2px solid #ffc0cb;
+    padding: 20px;
+    border-radius: 10px;
+}
