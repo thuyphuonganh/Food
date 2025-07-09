@@ -13,22 +13,12 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 2; $i++) {
             Product::create([
-                'name' => 'Chim Cánh Cụt',
-                'price' => rand(300000, 500000),
-                'description' => 'Wonderful',
-                'image' => 'images/CanhCutBongDeoYemKhongLo5.jpg',
-                'category_id' => '1'
-            ]);
-        }
-
-        for ($i = 1; $i <= 10; $i++) {
-            Product::create([
-                'name' => 'Gấu bông Stitch',
-                'price' => rand(300000, 500000),
-                'description' => 'Wonderful',
-                'image' => 'images/GauBongStitchOmVit4.jpg',
+                'name' => 'Sticky Chicken Rice Bowls',
+                'price' => 100000,
+                'description' => 'A delicious and versatile chicken recipe that combines tender',
+                'image' => 'https://i.pinimg.com/736x/cd/1f/18/cd1f185753d535325b3d69c1e8fc71ba.jpg',
                 'category_id' => '1'
             ]);
         }

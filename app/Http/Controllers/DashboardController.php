@@ -10,17 +10,8 @@ class DashboardController extends Controller
 {
     function index()
     {
-        $products = Product::with('category')->whereHas('category')->paginate(10);
-        return response()->json([
-            'status' => 200,
-            'message' => 'Lấy danh sách sản phẩm thành công',
-            'products' => $products->items(), // chỉ lấy mảng các sản phẩm
-            'current_page' => $products->currentPage(),
-            'last_page'    => $products->lastPage(),
-            'per_page'     => $products->perPage(),
-            'total'        => $products->total(),
-            'has_more'     => $products->hasMorePages(),
-        ]);
+        $products = Product::all();
+        return $products;
     }
 
     function Search(Request $request)

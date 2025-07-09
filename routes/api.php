@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\DashboardController;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,8 +26,14 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::group(['middleware' => ['auth:sanctum', 'check_role:user']], function () {
 
+    Route::get('user/success', function () {
+        return response()->json([
+            "message" => "success"
+        ]);
+    });
+
     Route::get('/user/profile', function () {
-        return response()->json(['message' => 'Chào User']);
+        return response()->json(['user' => auth()->user()]);
     });
 
     Route::get('user/cart', [CartController::class, 'index']);
