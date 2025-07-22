@@ -15,13 +15,13 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all(); // Lấy tất cả danh mục từ database
+        return $categories;
+        // if (isset($request->search)) {
+        //     $keyword = $request->input('search');
+        //     $categories = Category::where('name', 'LIKE', '%' . $keyword . '%')->get();
+        // }
 
-        if (isset($request->search)) {
-            $keyword = $request->input('search');
-            $categories = Category::where('name', 'LIKE', '%' . $keyword . '%')->get();
-        }
-
-        return view('admin.category.index', compact('categories'));
+        // return view('admin.category.index', compact('categories'));
     }
 
     /**

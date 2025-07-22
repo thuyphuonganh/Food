@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
@@ -15,6 +19,8 @@ Route::get('/user', function (Request $request) {
 Route::get('/', function () {
     return "ABC";
 })->name('home');
+
+Route::get('/category', [CategoryController::class, 'index']);
 
 Route::get('/product', [DashboardController::class, 'index'])->name('api.product');
 Route::get('/product/search', [DashboardController::class, 'Search'])->name('api.product.search');
@@ -33,8 +39,9 @@ Route::group(['middleware' => ['auth:sanctum', 'check_role:user']], function () 
     });
 
     Route::get('/user/profile', function () {
-        return response()->json(['user' => auth()->user()]);
+        return FacadesAuth::user();
     });
+    Route::patch('user/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('user/cart', [CartController::class, 'index']);
     Route::post('user/cart', [CartController::class, 'store']);
@@ -42,6 +49,10 @@ Route::group(['middleware' => ['auth:sanctum', 'check_role:user']], function () 
 
     Route::post('user/checkout', [CheckoutController::class, 'index']);
     Route::post('user/checkout/store', [CheckoutController::class, 'storeCod']);
+
+    Route::get('user/order', [OrderController::class, 'index']);
+
+
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'check_role:admin']], function () {

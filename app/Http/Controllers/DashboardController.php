@@ -22,22 +22,14 @@ class DashboardController extends Controller
         if ($request->order == "asc" || $request->order == "desc") {
             $order = $request->order;
         }
-        $products = Product::with('category')->whereHas('category')
+        $products = Product::whereHas('category')
             ->where('name', 'like', "%" . $search . "%")
             ->when($category, function ($query) use ($category) {
                 return $query->where('category_id', $category);
             })
             ->orderBy('price', $order)
-            ->paginate(10);
-        return response()->json([
-            'message' => 'Lấy danh sách sản phẩm thành công',
-            'products' => $products->items(), // chỉ lấy mảng các sản phẩm
-            'current_page' => $products->currentPage(),
-            'last_page'    => $products->lastPage(),
-            'per_page'     => $products->perPage(),
-            'total'        => $products->total(),
-            'has_more'     => $products->hasMorePages(),
-        ], 200);
+            ->get();
+        return $products;
     }
 
     function productDetail(Request $request)

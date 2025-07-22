@@ -40,8 +40,11 @@ class ProfileController extends Controller
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->save();
+        return response()->json([
+            'message' => 'Cập nhật thông tin thành công'
+        ]);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        //return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**

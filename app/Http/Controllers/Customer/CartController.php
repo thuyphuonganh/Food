@@ -19,7 +19,7 @@ class CartController extends Controller
     {
         try {
             $cart = Cart::where('user_id', Auth::id())->first();
-            $cartItems = $cart->cartItems ?? [];
+            $cartItems = $cart->cartItems()->with('product')->get() ?? [];
             $totalCost = 0;
             foreach ($cartItems as $cartItem) {
                 $totalCost += $cartItem->price * $cartItem->quantity;

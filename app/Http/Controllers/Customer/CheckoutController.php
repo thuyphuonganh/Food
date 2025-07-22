@@ -24,7 +24,7 @@ class CheckoutController extends Controller
 
                 return response()->json([
                     'message' => "Không có sản phẩm",
-                    'products' => $selectedProducts,
+                    'checkout' => $selectedProducts,
                 ], 404);
             }
             $total_amount = 0;
@@ -33,7 +33,7 @@ class CheckoutController extends Controller
             }
             return response()->json([
                 'message' => "Thông tin sản phẩm cần thanh toán",
-                'products' => $selectedProducts,
+                'checkout' => $selectedProducts,
                 'totalAmount' => $total_amount
             ], 200);
         } catch (Exception $e) {

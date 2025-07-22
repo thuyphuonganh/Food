@@ -11,17 +11,20 @@ class OrderController extends Controller
     public function index()
     {
         // Lấy danh sách đơn hàng của khách hàng hiện tại
-        $orders = Order::where('user_id', Auth::id())->with('orderDetails')->get();
-        return view('customer.orders', compact('orders'));
+        $orders = Order::where('user_id', Auth::id())
+            ->with('orderDetails.product') // load luôn cả product trong orderDetails
+            ->get();
+
+        return $orders;
     }
 
     public function show($id)
     {
         // Lấy chi tiết đơn hàng
         $order = Order::where('id', $id)
-                      ->where('user_id', Auth::id())
-                      ->with('orderDetails')
-                      ->firstOrFail();
+            ->where('user_id', Auth::id())
+            ->with('orderDetails')
+            ->firstOrFail();
         return view('customer.order-details', compact('order'));
     }
 }
