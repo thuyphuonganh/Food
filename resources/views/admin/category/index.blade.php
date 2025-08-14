@@ -44,7 +44,7 @@
                     <tr>
                         <th>Số thứ tự</th>
                         <th>Tên danh mục</th>
-                        <th>Hành động</th>
+                        <th>Tùy chỉnh</th>
                     </tr>
                 </thead>
                 <tbody>

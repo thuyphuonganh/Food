@@ -24,23 +24,25 @@ class OrderController extends Controller
     }
 
     public function updateStatus(Request $request, $id)
-    {
-        $order = Order::findOrFail($id);
-        $newStatus = $request->input('status');
+{
+    $order = Order::findOrFail($id);
+    $newStatus = $request->input('status');
 
-        // Define valid status transitions
-        $statusOrder = ['pending', 'in_progress', 'completed', 'cancelled'];
-        $currentIndex = array_search($order->status, $statusOrder);
-        $newIndex = array_search($newStatus, $statusOrder);
+    // Mảng trạng thái chuẩn (keys)
+    $statusOrder = ['pending', 'in_progress', 'completed', 'cancelled'];
 
-        // Allow only forward transitions
-        if ($newIndex <= $currentIndex) {
-            return redirect()->back()->with('error', 'Không thể chuyển trạng thái ngược lại hoặc về trạng thái cũ.');
-        }
+    $currentIndex = array_search($order->status, $statusOrder);
+    $newIndex = array_search($newStatus, $statusOrder);
 
-        $order->status = "$newStatus";
-        $order->save();
-
-        return redirect()->back()->with('success', 'Trạng thái đơn hàng đã được cập nhật thành công.');
+    // Cho phép chuyển trạng thái tiến lên hoặc giữ nguyên
+    if ($newIndex < $currentIndex) {
+        return redirect()->back()->with('error', 'Không thể chuyển trạng thái ngược lại.');
     }
+
+    $order->status = $newStatus;
+    $order->save();
+
+    return redirect()->back()->with('success', 'Trạng thái đơn hàng đã được cập nhật thành công.');
+}
+
 }

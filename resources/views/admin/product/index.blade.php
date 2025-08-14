@@ -19,7 +19,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="mt-2 ms-2">
-            <h2>Danh sách sản phẩm</h2>
+            <h2>Danh sách món ăn</h2>
             <form action="" method="GET" class="form-inline mt-3" role="form">
                 <a href="{{ route('admin.product.create') }}" class="btn btn-primary pull-right">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -29,19 +29,19 @@
                         <path d="M12 5l0 14" />
                         <path d="M5 12l14 0" />
                     </svg>
-                    Thêm sản phẩm
+                    Thêm món ăn
                 </a>
             </form>
             <table class="table table-hover mt-3">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Category</th>
-                        <th>Status</th>
-                        <th class="text-right">Actions</th>
+                        <th>Tên món</th>
+                        <th>Giá bán</th>
+                        <th>Ảnh</th>
+                        <th>Danh mục</th>
+                        <th>Trạng thái</th>
+                        <th class="text-right">Tùy chỉnh</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,10 +61,17 @@
 
                             <td>{{ $product->category->name ?? 'Uncategorized' }}</td>
                             <td>
-                                <span class="">
-                                    {{ ucfirst($product->status) }}
-                                </span>
+                                @if($product->status == 'in-stock')
+                                    Còn món
+                                @elseif($product->status == 'out-stock')
+                                    Hết món
+                                @else
+                                    Không xác định
+                                @endif
                             </td>
+
+
+
                             <td class="text-right">
                                 <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm btn-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

@@ -12,7 +12,7 @@
                 <input type="text" style="width: 40%" class="form-control" id="name" name="name" value="{{ old('name', $category->name) }}" required>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-save"></i> Save</button>
+            <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-save"></i>Lưu</button>
         </form>
 
         </div>

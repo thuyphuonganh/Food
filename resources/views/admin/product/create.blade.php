@@ -1,9 +1,37 @@
 @extends('admin.layouts.master')
 
 @section('content')
+<div class="container animate-slide-up">
+<div style="margin-top: 2rem;">
+    <a href="{{ route('admin.product.index') }}" style="text-decoration: none;">
+        <button style="
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            background-color: #BB3E03;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0 1rem;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        "
+        onmouseover="this.style.backgroundColor='#EE9B00'; this.style.transform='scale(1.05)';"
+        onmouseout="this.style.backgroundColor='#BB3E03'; this.style.transform='scale(1)';">
+            <img src="{{ asset('images/arrow-left-icon.png') }}" alt="Quay lại" style="
+                height: 20px;
+                margin-right: 8px;
+                transition: transform 0.3s ease;
+            "
+            onmouseover="this.style.transform='translateX(-3px)';"
+            onmouseout="this.style.transform='translateX(0)';">
+            Quay về
+        </button></a>
     <div class="container-fluid">
         <div class="mt-2 ms-2">
-            <h2>Thêm sản phẩm</h2>
+            <h2>Thêm món ăn</h2>
             <div class="card">
                 <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -64,8 +92,8 @@
                         <div class="d-flex align-items-center mt-3">
                             <span class="fw-bold ms-5 col-md-1">Trạng thái</span>
                             <select name="status" class="form-control w-50">
-                            <option value="in-stock" {{ old('status') == 'in-stock' ? 'selected' : '' }}>Còn hàng</option>
-                            <option value="out-stock" {{ old('status') == 'out-stock' ? 'selected' : '' }}>Hết hàng
+                            <option value="in-stock" {{ old('status') == 'in-stock' ? 'selected' : '' }}>Còn món</option>
+                            <option value="out-stock" {{ old('status') == 'out-stock' ? 'selected' : '' }}>Hết món
                             </option>
                         </select>
                         </div>
@@ -73,7 +101,7 @@
 
                     <div class="form-group">
                         <div class="d-flex align-items-center mt-3">
-                            <span class="fw-bold ms-5 col-md-1">Đăng tải ảnh</span>
+                            <span class="fw-bold ms-5 col-md-1">Thêm ảnh</span>
                             <input type="file" name="image" class="form-control w-50" onchange="showImage(this)">
                         </div>
                         @error('image')
@@ -82,7 +110,7 @@
                     </div>
 
                     <div class="d-flex align-items-center mt-3 ms-5">
-                        <button type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i>Lưu</button>
+                        <button type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i>Lưu món ăn</button>
                     </div>
 
                 </form>

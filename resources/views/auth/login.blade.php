@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Login DuDuStore</title>
+    <title>Đăng Nhập</title>
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-4/assets/css/login-4.css">
 </head>
 
@@ -22,7 +22,7 @@
                     <div class="row g-0">
                         <div class="col-12 col-md-6">
                             <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy"
-                                src="{{ asset('images/logo_auth.webp') }}" alt="BootstrapBrain Logo">
+                                src="{{ asset('images/logo_auth.png') }}" alt="BootstrapBrain Logo">
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="card-body p-3 p-md-4 p-xl-5">
@@ -44,7 +44,7 @@
 
                                         </div>
                                         <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
+                                            <label for="password" class="form-label">Mật khẩu</label>
                                             <input type="password" class="form-control" name="password" id="password">
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
@@ -53,14 +53,13 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="" name="remember" id="remember">
                                                 <label class="form-check-label text-secondary" for="remember">
-                                                    Remember
+                                                    Ghi nhớ đăng nhập
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Log in
-                                                    now</button>
+                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Đăng nhập ngay</button>
                                             </div>
                                         </div>
                                         <!-- Session Status -->
@@ -72,10 +71,8 @@
                                         <hr class="mt-5 mb-4 border-secondary-subtle">
                                         <div
                                             class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
-                                            <a href="{{ route('register') }}" class="link-secondary fw-light text-decoration-none">Create new
-                                                account</a>
-                                            <a href="{{ route('password.request') }}" class="link-secondary fw-bold text-decoration-none">Forgot
-                                                password</a>
+                                            <a href="{{ route('register') }}" class="link-secondary fw-light text-decoration-none">Đăng ký tài khoản mới</a>
+                                            <a href="{{ route('password.request.otp') }}" class="link-secondary fw-bold text-decoration-none">Quên mật khẩu</a>
                                         </div>
                                     </div>
                                 </div>

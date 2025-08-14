@@ -1,169 +1,224 @@
-{{-- <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-    <div class="container">
-        <a class="navbar-brand align-items-center header" href="#">
-            AppleStore
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active header" aria-current="page" href="{{ route('home') }}">TRANG CHỦ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active header" aria-current="page" href="{{ route('infor') }}">VỀ CHÚNG TÔI</a>
-                </li>
-            </ul>
+<!-- resources/views/layouts/header.blade.php -->
+<style>
+    header {
+        background-color: #f8f9fa;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item d-flex align-items-center">
-                    <a href="{{ route('cart.index') }}" class="nav-link active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-shopping-cart">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z" />
-                        </svg>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-user">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-                            <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
-                        </svg>
-                        <ul class="dropdown-menu">
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+        
+    }
+    .icon{margin-left: 25px;}
+    .search-bar {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-left: 0 20px;
+    }
+
+    .search-bar input[type="text"] {
+        width: 300px;
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    .search-bar button {
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-left: none;
+        background-color: #fcfdfeff;
+        color: white;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+    .search-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .search-bar button:hover .search-icon {
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+
+
+    .icons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-right: 60px;
+    }
+        .icon-box {
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+    }
+
+        .icon-box:hover {
+        transform: scale(1.05);
+    }
+
+    .icons a {
+        text-decoration: none;
+        color: #333;
+       
+    }
+
+    .icon-box a img {
+        transition: transform 0.3s ease;
+    }
+
+    .icon-box a:hover img {
+        transform: scale(1.2) rotate(-5deg);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        border-radius: 8px; /* Bo góc */
+        transition: transform 0.2s ease;
+         min-width: 90px;
+    }
+    .dropdown:hover{transform: scale(1.05);}
+
+    .dropdown-menu {
+    
+    position: absolute;
+    width: max-content;
+    min-width: auto;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    padding: 5px 10px;
+    box-sizing: border-box;
+    z-index: 1;
+    border-radius: 6px;       /* Bo góc nhẹ nhàng */
+    border: 1px solid #ccc;   /* Viền mỏng */
+    background-color: white;  /* Màu nền */
+    
+    
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #FFBF69;
+        min-width: 160px;
+        box-shadow: 0 4px 8px rgba(204, 134, 53, 0.1); 
+        z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a,
+    .dropdown-content form button {
+        padding: 8px 12px;
+        display: block;
+        font-size: 14px;
+        color: #333;
+        text-decoration: none;
+        white-space: nowrap; /* Không xuống dòng */
+    }
+    .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    }
+    .dropdown-content a:hover {
+            background-color: #f1f1f1;
+    }
+    .search-bar button img {
+        transition: transform 0.3s ease;
+    }
+
+    .search-bar button:hover img {
+        transform: scale(1.2) rotate(5deg);
+    }
+    .dropdown > a img {
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown > a:hover img {
+        transform: scale(1.2) rotate(-5deg);
+    }
+
+
+</style>
+
+<header>
+    <!-- LOGO -->
+    <a href="{{ route('home') }}" class="logo" style="margin-left: 50px;"><img src="{{ asset('images/logo2.png') }}" alt="Logo" style="height: 30%; width: 40%;"></a>
+
+    <!-- THANH TÌM KIẾM -->
+    <form class="search-bar" method="GET" action="{{ route('search') }}">
+    <input type="text" name="search" value="{{ request('search') }}" placeholder="Tìm món ăn...">
+    <button type="submit">
+        <img src="{{ asset('images/timkiem.png') }}" alt="Tìm kiếm" style="width: 30px; height: 25px;">
+    </button>
+</form>
+
+
+    <!-- BIỂU TƯỢNG -->
+    <div class="icons">
+        <!-- Giỏ hàng -->
+<div class="icon-box">
+    <a href="{{ route('cart.index') }}" title="Giỏ hàng">
+        <img src="{{ asset('images/giohang.png') }}" alt="Giỏ hàng" style="width: 30px; height: 24px;">
+    </a>
+</div>
+
+
+       <!-- Đơn mua -->
+@auth
+    @if(auth()->user()->role == 0)
+        <a href="{{ route('orders.index') }}" title="Đơn mua">
+            <img src="{{ asset('images/donmua.png') }}" alt="Đơn mua" style="width: 24px; height: 24px;">
+        </a>
+    @endif
+@endauth
+
+
+    <!-- Người dùng dropdown -->
+<div class="dropdown">
+    <!-- Nút dropdown với icon -->
+    <a href="#" title="Tài khoản" >
+        <img src="{{ asset('images/people.png') }}" alt="Thông tin cá nhân" style="width: 24px; height: 24px;">
+    </a>
+
+    <div class="dropdown-menu">
                             @if (Route::has('login'))
                                 @auth
-                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Thông tin khách hàng</a>
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Thông tin cá nhân</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="{{ route('orders.index') }}">Lịch sử đơn hàng</a>
+                                    <li><a class="dropdown-item" href="{{ route('orders.index') }}">Đơn hàng</a>
                                     </li>
                                     <li><a class="dropdown-item" href="#"
                                             onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
                                 @else
-                                    <li><a class="dropdown-item" href="{{ route('admin.login') }}">Đăng nhập cho quản trị
-                                            viên</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('login') }}">Đăng nhập cho khách hàng</a>
-                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('login') }}">Đăng nhập</a></li>
+                                    
                                     @if (Route::has('register'))
                                         <li><a class="dropdown-item" href="{{ route('register') }}">Đăng ký</a></li>
                                     @endif
 
                                 @endauth
                             @endif
-
-                        </ul>
-                    </a>
-
-                </li>
-            </ul>
-        </div>
-    </div>
-
-</nav> --}}
-
-<nav class="navbar navbar-expand-xl bg-light">
-    <div class="container">
-        <a class="navbar-brand header" href="#" style="color: #198754;">
-            <img style="color: #198754; width: 40px" src="{{ asset('images/logo_store.png') }}" alt=""
-                width="30" height="24" class="d-inline-block align-text-top">
-            COMPOSE STORE
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <form class="d-flex" action="{{ route('search') }}" method="GET">
-                        <input class="form-control me-2 ms-2"
-                            style="width: 25rem; font-size: 12px; border-radius: 12px; font-weight: lighter"
-                            type="search" placeholder="Hôm nay bạn muốn tìm gì?" aria-label="Search" name="search"
-                            value="{{ request()->input('search') }}">
-                        <button class="btn btn-outline-success" type="submit"
-                            style="border-radius: 24px; font-size: 13px;>
-                            <div class="d-flex
-                            align-items-center ps-2 pe-2">
-                            <svg style="width: 15px; margin-right: 5px;" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-search">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                                <path d="M21 21l-6 -6" />
-                            </svg>
-                            Tìm kiếm
-        </div>
-        </button>
-        </form>
-        </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item d-flex align-items-center" style="margin-right: 25px">
-                <svg style="color: #198754; width: 17px" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-home">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                    <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                </svg>
-                <a style="color: #198754; font-size: 14px;" class="nav-link" aria-current="page" href="#">
-                    Trang chủ
-                </a>
-            </li>
-            <li class="nav-item menu-item d-flex align-items-center" style="margin-right: 25px">
-                <svg style="color: #198754; width: 17px" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-user">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                </svg>
-                <a style="color: #198754; font-size: 14px" class="nav-link" aria-current="page" href="#">
-                    Tài khoản
-                </a>
-                <div class="dropdown">
-                    @if (Route::has('login'))
-                        @auth
-                            @if (auth()->user()->role === 'user')
-                                <a class="dropdown-item" href="{{ route('profile.edit') }}">Thông tin khách hàng</a>
-                                <a class="dropdown-item" href="{{ route('orders.index') }}">Lịch sử đơn hàng</a>
-                            @endif
-                            <a class="dropdown-item" href="#"
-                                onclick="document.getElementById('myForm').submit()">Đăng xuất</a>
-                        @else
-                            <a href="{{ route('login') }}" class="dropdown-item">Đăng nhập</a>
-                            <a href="{{ route('register') }}" class="dropdown-item">Đăng ký</a>
-                        @endauth
-                    @endif
-                </div>
-            </li>
-            <li class="nav-item d-flex align-items-center">
-                <svg style="color: #198754; width: 17px" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                    <path d="M17 17h-11v-14h-2" />
-                    <path d="M6 5l14 1l-1 7h-13" />
-                </svg>
-                <a style="color: #198754; font-size: 14px" class="nav-link" aria-current="page"
-                    href="{{ route('cart.index') }}">
-                    Giỏ hàng
-                </a>
-            </li>
-        </ul>
+   
     </div>
     </div>
-</nav>
+</header>

@@ -15,7 +15,8 @@ class OrderController extends Controller
             ->with('orderDetails.product') // load luôn cả product trong orderDetails
             ->get();
 
-        return $orders;
+        // Trả về view danh sách đơn hàng
+        return view('customer.orders', compact('orders'));
     }
 
     public function show($id)
@@ -23,8 +24,10 @@ class OrderController extends Controller
         // Lấy chi tiết đơn hàng
         $order = Order::where('id', $id)
             ->where('user_id', Auth::id())
-            ->with('orderDetails')
+            ->with('orderDetails.product') // load luôn sản phẩm
             ->firstOrFail();
+
+        // Trả về view chi tiết đơn hàng
         return view('customer.order-details', compact('order'));
     }
 }

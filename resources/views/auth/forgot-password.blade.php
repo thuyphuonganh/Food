@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Login DuDuStore</title>
+    <title>Quên Mật Khẩu </title>
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-4/assets/css/login-4.css">
 </head>
 
@@ -25,23 +25,23 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-5">
-                                            <h3>Forgot Password</h3>
+                                            <h3>Quên mật khẩu</h3>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="{{ route('password.email') }}" method="POST">
+                                <form action="{{ route('password.email.otp') }}" method="POST">
                                     @csrf
                                     <div class="row gy-3 gy-md-4 overflow-hidden">
                                         <div class="col-12">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email" :value="old('email') id="email"
-                                                placeholder="Email">
+                                            <input type="email" class="form-control" name="email" :value="old('email')" id="email"
+                                                placeholder="yourmail@gmail.com">
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Reset Password</button>
+                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Đặt lại mật khẩu</button>
                                             </div>
                                         </div>
                                         <!-- Session Status -->
@@ -53,9 +53,8 @@
                                         <hr class="mt-5 mb-4 border-secondary-subtle">
                                         <div
                                             class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
-                                            <a href="{{ route('register') }}" class="link-secondary fw-bold text-decoration-none">Create new
-                                                account</a>
-                                            <a href="{{ route('login') }}" class="link-secondary fw-bold text-decoration-none">Login now</a>
+                                            <a href="{{ route('register') }}" class="link-secondary fw-bold text-decoration-none">Đăng ký tài khoản mới</a>
+                                            <a href="{{ route('login') }}" class="link-secondary fw-bold text-decoration-none">Đăng nhập</a>
                                         </div>
                                     </div>
                                 </div>

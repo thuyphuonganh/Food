@@ -11,7 +11,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <title>Hello, world!</title>
+    <title>Quản lý hệ thống</title>
     <style>
         li {
             list-style: none;
@@ -31,7 +31,7 @@
             max-width: 264px;
             min-width: 264px;
             transition: all 0.35s ease-in-out;
-            background-color: #080d1a;
+            background-color: #001219;
             display: flex;
             flex-direction: column;
         }
@@ -78,16 +78,22 @@
             transition: all 0.35s;
             display: block;
         }
+
+        
     </style>
 </head>
 
 <body>
 
-    <div class="d-flex" style="background-color: #F8F9FC">
+    <div class="d-flex" style="background-color: #E9D8A6">
         {{-- Sidebar --}}
         <aside id="sidebar">
             <div class="sidebar-logo">
-                <a href="">COMPOSE ADMIN</a>
+                <a href="">
+                    <img src="{{ asset('images/admin-icon.png') }}" alt="Admin Icon" style="width: 50px; height:50px; vertical-align: middle; margin-right: 8px;">
+                    ADMIN
+                </a>
+                
                 <hr class="bg-white">
             </div>
             {{-- SidebarNavigation --}}
@@ -106,7 +112,7 @@
                             <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                             <path d="M10 12h4v4h-4z" />
                         </svg>
-                        <span>Trang chủ</span>
+                        <span>Trang chính</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -180,6 +186,28 @@
                         <span>Đơn hàng</span>
                     </a>
                 </li>
+                        <li class="sidebar-item">
+                <a  href="{{ route('admin.contacts.index') }}" class="sidebar-link">
+                    {{-- SVG icon phong bì --}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
+                        class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.217l-8 4.8-8-4.8V4z"/>
+                        <path d="M0 6.383v5.634A2 2 0 0 0 2 14h12a2 2 0 0 0 2-2V6.383l-7.555 4.533a.5.5 0 0 1-.89 0L0 6.383z"/>
+                    </svg>
+
+                    <span class="ms-2">Phản hồi</span>
+
+                    @php
+                        $unreadCount = \App\Models\Contact::where('is_read', false)->count();
+                    @endphp
+                    @if($unreadCount > 0)
+                        <span class="badge bg-danger ms-1">{{ $unreadCount }}</span>
+                    @endif
+                </a>
+            </li>
+
+
+
                 <li class="sidebar-item">
 
                     <form id="logout-form" method="POST" action="{{ route('logout') }}">
@@ -217,17 +245,12 @@
         {{-- Sidebar end --}}
         {{-- Main component --}}
         <div class="main">
-            <nav class="navbar navbar-expand-lg" style="background-color: #FFFFFF">
-                <button class="toggler-btn" type="button" style="background-color: #ffffff">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 6h16" />
-                        <path d="M7 12h13" />
-                        <path d="M10 18h10" />
-                    </svg>
+            <nav class="navbar navbar-expand-lg" style="background-color: #CA6702">
+                <button class="toggler-btn rounded" type="button" style="background-color: #E9D8A6">
+                    <img src="{{ asset('images/menu-admin-icon.png') }}" alt="Menu" width="30" height="27">
+                    
                 </button>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -246,11 +269,7 @@
                             @yield('search')
                         </li>
                     </ul>
-                    <div class="d-flex">
-                        <img class="rounded-circle" src="{{ asset('images/admin.jpg') }}" alt=""
-                            style="width: 25px; height: 25px;">
-                        <span>{{ Auth::user()->name }}</span>
-                    </div>
+                    
                 </div>
 
 

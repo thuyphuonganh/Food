@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>SignUp DuDuStore</title>
+    <title>Đăng Ký</title>
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-4/assets/css/login-4.css">
 </head>
 
@@ -25,7 +25,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-5">
-                                            <h3>Sign Up</h3>
+                                            <h3>Đăng ký</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -33,33 +33,32 @@
                                     @csrf
                                     <div class="row gy-3 gy-md-4 overflow-hidden">
                                         <div class="col-12">
-                                            <label for="text" class="form-label">Name</label>
+                                            <label for="text" class="form-label">Tên</label>
                                             <input type="text" class="form-control" name="name" :value="old('name')"
-                                                placeholder="Name">
+                                                >
                                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                         </div>
                                         <div class="col-12">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" class="form-control" name="email" :value="old('email') id="email"
-                                                placeholder="Email">
+                                                >
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
                                         </div>
                                         <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                                            <label for="password" class="form-label">Mật khẩu</label>
+                                            <input type="password" class="form-control" name="password" id="password" >
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                         </div>
                                         <div class="col-12">
-                                            <label for="password" class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+                                            <label for="password" class="form-label">Xác nhận mật khẩu</label>
+                                            <input type="password" class="form-control" name="password_confirmation" >
                                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Sign Up
-                                                    now</button>
+                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Xác nhận đăng ký</button>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +66,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <hr class="mt-5 mb-4 border-secondary-subtle">
-                                        <p class="m-0 text-secondary text-center">Already have an account? <a href="{{ route('login') }}" class="link-primary text-decoration-none">Sign in</a></p>
+                                        <p class="m-0 text-secondary text-center">Bạn đã có tài khoản? <a href="{{ route('login') }}" class="link-primary text-decoration-none">Đăng nhập</a></p>
                                     </div>
                                 </div>
                             </div>

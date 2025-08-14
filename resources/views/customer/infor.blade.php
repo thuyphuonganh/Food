@@ -1,4 +1,3 @@
-
 @extends('customer.layouts.master')
 
 @section('content')
@@ -16,7 +15,7 @@
         .image-card {
             height: 19rem;
             width: 100%;
-            object-fit: cover; /* Dùng 'cover' để ảnh gấu bông hiển thị đẹp */
+            object-fit: cover;
         }
 
         .card-body {
@@ -51,7 +50,6 @@
             }
         }
 
-        /* Hiệu ứng cho tiêu đề phần */
         .section-title {
             position: relative;
             display: inline-block;
@@ -65,7 +63,6 @@
             left: 0;
             width: 50%;
             height: 3px;
-            /*background-color: #000000;  Màu hồng phấn hợp với gấu bông */
             transition: width 0.3s ease;
         }
 
@@ -73,66 +70,97 @@
             width: 100%;
         }
 
-        /* Định dạng phần giới thiệu cửa hàng */
         .about-section {
-            background-color: #ffffff; /* Nền hồng nhạt dễ thương */
+            background-color: #ffffff;
             padding: 3rem 0;
         }
 
         .about-img {
             width: 100%;
             height: auto;
-            border-radius: 15px; /* Bo góc mềm mại */
+            border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
+        .section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #ff6600; /* Màu cam */
+    font-weight: bold;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50%;
+    height: 3px;
+    background-color: #ff6600; /* Màu gạch chân */
+    transition: width 0.3s ease;
+}
+.section-title:hover::after {
+    width: 100%;
+}
+
     </style>
 
     <div class="container my-5">
-        <!-- Phần 1: Giới thiệu về cửa hàng bán gấu bông -->
-        <section class="about-section">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2 class="section-title">Về Cửa Hàng Gấu Bông Yêu Thương</h2>
-                    <p>Chào mừng bạn đến với Gấu Bông Yêu Thương! Chúng tôi tự hào mang đến những chú gấu bông đáng yêu, được làm thủ công với tình yêu và sự tỉ mỉ. Thành lập từ năm 2015, cửa hàng của chúng tôi đã trở thành điểm đến yêu thích cho những ai tìm kiếm món quà ý nghĩa.</p>
-                    <p>Mỗi chú gấu bông được làm từ chất liệu mềm mại, an toàn cho cả trẻ em và người lớn, đảm bảo mang lại cảm giác ấm áp như một cái ôm. Sứ mệnh của chúng tôi là lan tỏa niềm vui và yêu thương qua từng sản phẩm.</p>
-                </div>
+        <!-- Phần 1: Giới thiệu -->
+<section class="about-section">
+    <div class="row align-items-center">
+        <!-- Cột hình ảnh bên trái -->
+        <div class="col-md-6 mb-4 mb-md-0">
+            <img src="{{ asset('images/logo_auth.png') }}" 
+                 alt="Về Food" 
+                 class="about-img">
+        </div>
 
-            </div>
-        </section>
+        <!-- Cột nội dung bên phải -->
+        <div class="col-md-6">
+            <h2 class="section-title">Về Food</h2>
+            <p>Chào mừng bạn đến với <strong>Food - Fuel your day with flavor</strong> – nơi mang đến những bữa ăn ngon miệng, an toàn và tiện lợi mỗi ngày.  
+                Chúng tôi ra đời với sứ mệnh mang hương vị ẩm thực phong phú từ khắp nơi đến bàn ăn của bạn, với nguyên liệu tươi sạch và quy trình chế biến đảm bảo vệ sinh.</p>
+            <p>Food không chỉ là nơi bán đồ ăn, mà còn là cầu nối để lan tỏa sự ấm áp, niềm vui và sự tiện lợi trong từng bữa ăn.  
+                Dù bạn bận rộn hay muốn thưởng thức món ngon tại nhà, Food luôn sẵn sàng phục vụ.</p>
+        </div>
+    </div>
+</section>
 
-        <!-- Phần 2: Giới thiệu gấu bông chất lượng -->
+
+        <!-- Phần 2: Chính sách -->
         <section class="my-5">
-            <h2 class="text-center section-title">Gấu Bông Chất Lượng Của Chúng Tôi</h2>
+            <h2 class="text-center section-title">Chính Sách & Cam Kết</h2>
             <div class="row row-all">
-                <!-- Gấu bông 1 -->
+                <!-- Chính sách 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="card card-hover">
-                        <img src="{{ asset('images/CanhCutBongDeoYemKhongLo5.jpg') }}" class="card-img-top image-card" alt="Gấu nâu classic">
+                        <img src="{{ asset('images/camket1.png') }}" class="card-img-top image-card" alt="Nguyên liệu tươi">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Gấu Cánh Cụt</h5>
-                            <p class="card-text">Chú gấu cánh cụt mềm mại, kích thước 30cm, làm từ lông tơ cao cấp, hoàn hảo để ôm và trang trí phòng.</p>
+                            <h5 class="card-title">Nguyên Liệu Tươi Sạch</h5>
+                            <p class="card-text">Tất cả nguyên liệu được chọn lọc kỹ lưỡng từ các nhà cung cấp uy tín, đảm bảo độ tươi ngon và an toàn.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gấu bông 2 -->
+                <!-- Chính sách 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="card card-hover">
-                        <img src="{{ asset('images/GauBongStitchOmVit4.jpg') }}" class="card-img-top image-card" alt="Gấu hồng phấn">
+                        <img src="{{ asset('images/camket2.png') }}" class="card-img-top image-card" alt="Giao hàng nhanh">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Gấu Stitch</h5>
-                            <p class="card-text">Gấu Stitch phấn dễ thương, kích thước 25cm, chất liệu hữu cơ an toàn, phù hợp cho trẻ em.</p>
+                            <h5 class="card-title">Giao Hàng Nhanh</h5>
+                            <p class="card-text">Đặt món chỉ trong vài thao tác, chúng tôi sẽ giao tận nơi nhanh chóng để bạn thưởng thức khi còn nóng hổi.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gấu bông 3 -->
+                <!-- Chính sách 3 -->
                 <div class="col-md-4 mb-4">
                     <div class="card card-hover">
-                        <img src="{{ asset('images/20230701_Np3P8aWu.jpg') }}" class="card-img-top image-card" alt="Gấu trắng jumbo">
+                        <img src="{{ asset('images/camket3.png') }}" class="card-img-top image-card" alt="An toàn thực phẩm">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Mèo DUDU</h5>
-                            <p class="card-text">Mèo bông trắng khổng lồ, kích thước 60cm, siêu mềm, lý tưởng để làm quà tặng đặc biệt.</p>
+                            <h5 class="card-title">An Toàn Thực Phẩm</h5>
+                            <p class="card-text">Tuân thủ nghiêm ngặt quy định vệ sinh an toàn thực phẩm để đảm bảo sức khỏe cho khách hàng.</p>
                         </div>
                     </div>
                 </div>
@@ -140,4 +168,3 @@
         </section>
     </div>
 @endsection
-

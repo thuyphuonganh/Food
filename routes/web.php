@@ -8,21 +8,42 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\OtpPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 
-// Route::get('/', [DashboardController::class, 'index'])->name('home');
-Route::get('/', function() {
-    return "AAA";
-})->name('home');
+Route::get('/', [DashboardController::class, 'index'])->name('home');
 
+Route::get('/products/category/{id}', [ProductController::class, 'filterByCategory'])->name('products.byCategory');
+//Lọc theo danh mục
 Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('search');
-// Product Detail
+// chi tiết món ăn 
 Route::get('/dashboard/product-detail/{id}', [DashboardController::class, 'productDetail'])->name('productDetail');
+//Quên mật khẩu
+Route::get('/forgot-password-otp', [OtpPasswordController::class, 'showEmailForm'])
+    ->name('password.request.otp');
+Route::post('/forgot-password/send-otp', [OtpPasswordController::class, 'sendOtp'])
+    ->name('password.email.otp');
+//Xác nhận otp
+Route::get('/forgot-password/verify-otp', [OtpPasswordController::class, 'showVerifyForm'])->name('password.verify.otp');
+Route::post('/forgot-password/verify-otp', [OtpPasswordController::class, 'verifyOtp'])->name('password.verify.otp.post');
+//đặt lại mk
+Route::get('/reset-password-otp', [OtpPasswordController::class, 'showResetForm'])->name('password.reset.otp');
+Route::post('/reset-password-otp', [OtpPasswordController::class, 'resetPassword'])->name('password.update.otp');
+    
+// Infor
+Route::get('/about', function () {
+    return view('customer.infor');
+})->name('customer.infor');
+Route::get('/contact', function () {
+    return view('customer.contact');
+})->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-    // Infor
-Route::get('/dashboard/infor', [DashboardController::class, 'infor'])->name('infor');
+
 
 // User
 
@@ -67,8 +88,20 @@ Route::group(['middleware' => ['auth', 'verified', 'check_role:admin'], 'prefix'
     Route::get('/order', [AdminOrderController::class, 'index'])->name('order.index');
     Route::get('/order/{id}', [AdminOrderController::class, 'show'])->name('order.show'); // /admin/orders/{order}
     //Route::get('orders/{order}/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
-    Route::post('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
+    Route::post('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    //Contact
+    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/{id}', [ContactController::class, 'show'])->name('contacts.show');//Bấm dô là "đã đọc"
+    
+    
+    // Route::get('/contacts/{id}/reply', [ContactController::class, 'reply'])
+    // ->name('contacts.reply');
+    
+    Route::post('/contacts/{id}/reply', [ContactController::class, 'sendReply'])
+    ->name('contacts.sendReply');
+    
 });
+
 
 require __DIR__ . '/auth.php';

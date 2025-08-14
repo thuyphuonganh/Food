@@ -13,16 +13,17 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        $categories = Category::all(); // Lấy tất cả danh mục từ database
-        return $categories;
-        // if (isset($request->search)) {
-        //     $keyword = $request->input('search');
-        //     $categories = Category::where('name', 'LIKE', '%' . $keyword . '%')->get();
-        // }
-
-        // return view('admin.category.index', compact('categories'));
+{
+    if ($request->has('search')) {
+        $keyword = $request->input('search');
+        $categories = Category::where('name', 'LIKE', '%' . $keyword . '%')->get();
+    } else {
+        $categories = Category::all(); // Lấy tất cả danh mục
     }
+
+    return view('admin.category.index', compact('categories'));
+}
+
 
     /**
      * Show the form for creating a new resource.

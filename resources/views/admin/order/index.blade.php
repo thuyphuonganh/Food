@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="mt-2 ms-2">
             <div class="card">
-                <div class="card-header d-flex justify-content-center align-items-center" style="background-color: black">
+                <div class="card-header d-flex justify-content-center align-items-center" style="background-color: #001219">
                     <h4 class="card-title text-white">Danh sách đơn hàng</h4>
                 </div>
                 <div class="card-body">
@@ -47,7 +47,7 @@
                                     <th>Số điện thoại</th>
                                     <th class="text-center">Tổng tiền</th>
                                     <th class="text-center">Trạng thái</th>
-                                    <th class="text-center">Action</th>
+                                    <th class="text-center">Tùy chọn</th>
                                 </tr>
                             </thead>
                             <tbody>

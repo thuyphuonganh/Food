@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'price' => 'required|numeric|min:50000',
+            'price' => 'required|numeric|min:1000',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'description' => 'nullable',
             'status' => 'required|in:in-stock,out-stock',
@@ -81,7 +81,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'price' => 'required|numeric|min:50000',
+            'price' => 'required|numeric|min:1000',
             'status' => 'required|in:in-stock,out-stock',
             'category_id' => 'nullable|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
@@ -102,4 +102,18 @@ class ProductController extends Controller
 
         return redirect()->route('admin.product.index')->with('success', 'Sản phẩm đã được cập nhật thành công!');
     }
+    public function filterByCategory($id)
+    {
+        $category = Category::find($id);
+
+        if (!$category) {
+            abort(404, 'Không tìm thấy danh mục');
+        }
+
+        $products = Product::where('category_id', $id)->get();
+
+        return view('filtercategory', compact('products', 'category'));
+    }
+
+
 }

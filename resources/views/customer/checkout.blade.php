@@ -1,7 +1,40 @@
 @extends('customer.layouts.master')
 @section('content')
+<div class="container animate-slide-up">
+<div style="margin-top: 2rem;">
+    <a href="{{ route('cart.index') }}" style="text-decoration: none;">
+        <button style="
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            background-color: #BB3E03;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0 1rem;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        "
+        onmouseover="this.style.backgroundColor='#EE9B00'; this.style.transform='scale(1.05)';"
+        onmouseout="this.style.backgroundColor='#BB3E03'; this.style.transform='scale(1)';">
+            <img src="{{ asset('images/arrow-left-icon.png') }}" alt="Quay lại" style="
+                height: 20px;
+                margin-right: 8px;
+                transition: transform 0.3s ease;
+            "
+            onmouseover="this.style.transform='translateX(-3px)';"
+            onmouseout="this.style.transform='translateX(0)';">
+            Quay về giỏ hàng
+        </button></a>
     <div class="container animate-slide-up mt-5">
-        <h1 class="mb-4 text-center">Thanh Toán</h1>
+        
+        <h1 class="mb-4 text-center bg-warning text-dark p-3 rounded">
+        Thanh Toán
+        </h1>
+
+
 
         <div class="row">
             <!-- Danh sách sản phẩm -->
@@ -16,14 +49,15 @@
                                 <h4 class="fw-bold mb-0">{{ $product['name'] }}</h4>
                             </div>
                             <div class="text-end">
-                                <span class="text-primary fw-bold">₫{{ $product['price'] }}</span><br>
+                                <span class="text-primary fw-bold">{{ number_format($product['price'], 0, ',', '.') }}đ</span><br>
                                 <span class="text-black">x{{ $product['quantity'] }}</span>
                             </div>
                         </li>
                     @endforeach
 
                 </ul>
-                <h5 class="text-end">Tổng tiền: <strong>{{ $total_amount }} đ</strong></h5>
+                <h5 class="text-end">Tổng tiền: <strong>{{ number_format($total_amount, 0, ',', '.') }}đ</strong>
+</h5>
             </div>
 
             <!-- Form thông tin khách hàng -->
@@ -32,17 +66,20 @@
                 <form action="{{ route('checkout.store') }}" method="POST" id="checkout-form">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Họ và tên</label>
-                        <input type="text" id="name" class="form-control" name="name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Số điện thoại</label>
-                        <input type="text" id="phone" class="form-control" name="phone">
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Địa chỉ</label>
-                        <input type="text" id="address" class="form-control" name="address">
-                    </div>
+        <label for="name" class="form-label">Họ và tên</label>
+        <input type="text" id="name" class="form-control" name="name"
+               value="{{ old('name', $user->name ?? '') }}">
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Số điện thoại</label>
+        <input type="text" id="phone" class="form-control" name="phone"
+               value="{{ old('phone', $user->phone ?? '') }}">
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Địa chỉ</label>
+        <input type="text" id="address" class="form-control" name="address"
+               value="{{ old('address', $user->address ?? '') }}">
+    </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Mô tả</label>
                         <textarea class="form-control" rows="2" name="description"></textarea>
@@ -61,11 +98,17 @@
                     <input type="hidden" name="total_amount" value="{{ $total_amount }}">
                     <input type="hidden" name="selected_products", value="{{ json_encode($selectedProducts) }}">
 
-                    <button type="button" class="btn btn-success mt-3 w-100" onclick="confirmPayment()">Xác nhận thanh toán</button>
+                   <button type="button" class="btn mt-3 w-100"  style="background-color: #0A9396"; color: white; onclick="confirmPayment()">
+                        Xác nhận thanh toán
+                    </button>
+
                 </form>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
     <script>
         function confirmPayment() {
             var name = document.getElementById('name').value;

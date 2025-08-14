@@ -47,19 +47,19 @@
 
                                         </div>
                                         <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
+                                            <label for="password" class="form-label">Mật khẩu</label>
                                             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                         </div>
                                         <div class="col-12">
-                                            <label for="password" class="form-label">Confirm Password</label>
+                                            <label for="password" class="form-label">Xác nhận mật khẩu</label>
                                             <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
                                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Reset Password</button>
+                                                <button class="btn bsb-btn-xl btn-dark" type="submit">Đặt lại mật khẩu</button>
                                             </div>
                                         </div>
                                     </div>
