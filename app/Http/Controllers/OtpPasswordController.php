@@ -27,13 +27,14 @@ class OtpPasswordController extends Controller
         return back()->withErrors(['email' => 'Email không tồn tại trong hệ thống.']);
     }
         $otp = rand(100000, 999999); // Tạo OTP 6 số
+        $expiresAt = now()->addMinutes(6); // hết hạn sau 6 phút
 
-        // Lưu vào session
+        // Lưu OTP + email + thời gian hết hạn vào session
         session([
             'otp' => $otp,
-            'otp_email' => $request->email
+            'otp_email' => $request->email,
+            'otp_expires_at' => $expiresAt,
         ]);
-
         // Gửi email OTP
         Mail::raw("Mã OTP của bạn là: {$otp}", function ($message) use ($request) {
             $message->to($request->email)
@@ -52,18 +53,29 @@ class OtpPasswordController extends Controller
     // 4. Xử lý OTP
     public function verifyOtp(Request $request)
 {
-    $request->validate([
-        'otp' => 'required|numeric'
-    ]);
+            $request->validate([
+            'otp' => 'required|numeric'
+        ]);
 
-    if ($request->otp == session('otp')) {
-        // Đánh dấu OTP đã xác thực
-        session(['otp_verified' => true]);
+        // Kiểm tra OTP và thời gian tồn tại
+        if (!session('otp') || !session('otp_expires_at')) {
+            return back()->withErrors(['otp' => 'Vui lòng yêu cầu OTP trước.']);
+        }
 
-        return redirect()->route('password.reset.otp');
-    }
+        // Nếu OTP hết hạn
+        if (now()->greaterThan(session('otp_expires_at'))) {
+            session()->forget(['otp', 'otp_email', 'otp_expires_at']);
+            return back()->withErrors(['otp' => 'OTP đã hết hạn. Vui lòng yêu cầu OTP mới.']);
+        }
 
-    return back()->withErrors(['otp' => 'Mã OTP không đúng']);
+        // Nếu OTP đúng
+        if ($request->otp == session('otp')) {
+            session(['otp_verified' => true]);
+            return redirect()->route('password.reset.otp');
+        }
+
+        return back()->withErrors(['otp' => 'Mã OTP không đúng']);
+
 }
 
 

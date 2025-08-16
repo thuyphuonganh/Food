@@ -47,7 +47,7 @@
                                     <th>Số điện thoại</th>
                                     <th class="text-center">Tổng tiền</th>
                                     <th class="text-center">Trạng thái</th>
-                                    <th class="text-center">Tùy chọn</th>
+                                    <th class="text-center">Xem</th>
                                 </tr>
                             </thead>
                             <tbody>

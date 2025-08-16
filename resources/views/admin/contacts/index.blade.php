@@ -7,8 +7,9 @@
     <h1>Danh sách liên hệ</h1>
 
     @if($contacts->isEmpty())
-        <p>Chưa có liên hệ nào.</p>
-    @else
+    <p>Chưa có liên hệ nào.</p>
+@else
+    <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead class="table-dark text-center align-middle">
                 <tr>
@@ -37,7 +38,7 @@
                         @endif
                     </td>
                     <td>{{ $contact->created_at->format('d/m/Y H:i') }}</td>
-                    <td>
+                    <td class="text-nowrap">
                         <a href="{{ route('admin.contacts.show', $contact->id) }}" class="btn btn-info btn-sm">
                             Xem
                         </a>
@@ -46,6 +47,8 @@
                 @endforeach
             </tbody>
         </table>
-    @endif
+    </div>
+@endif
+
 </div>
 @endsection

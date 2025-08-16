@@ -82,7 +82,7 @@
                                 </tr>
                             </tbody>
                         </table>
-
+                    
                         {{-- Chi tiết sản phẩm --}}
                         <h5 class="text-uppercase mt-4 mb-3">Chi Tiết Sản Phẩm</h5>
                         <table class="table table-bordered text-center align-middle">

@@ -214,7 +214,7 @@
                         @csrf
 
                     </form>
-                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="sidebar-link">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal" class="sidebar-link">
                         <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round"
@@ -226,6 +226,7 @@
                         </svg>
                         <span>Đăng xuất</span>
                     </a>
+
 
                 </li>
             </ul>
@@ -305,6 +306,28 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     -->
+    <!-- Modal xác nhận logout -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="logoutModalLabel">Xác nhận đăng xuất</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body text-center">
+        Bạn có chắc chắn muốn đăng xuất không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <form id="logout-form" method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-danger">Đăng xuất</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>

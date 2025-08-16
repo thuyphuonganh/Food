@@ -100,8 +100,8 @@
                 label: 'VNĐ',
                 data: values,
                 borderWidth: 1,
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                borderColor: 'rgba(147, 46, 3, 1)',
+                backgroundColor: 'rgba(219, 84, 35, 0.7)',
                 barPercentage: 1.0,
                 categoryPercentage: 1.0
             }]

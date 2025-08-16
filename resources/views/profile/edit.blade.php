@@ -171,15 +171,17 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-9 text-secondary">
-                                    <button type="submit" class="btn btn-primary px-4">Lưu thay đổi</button>
-                                    @if (session('status') === 'password-updated')
-                                        <p x-data="{ show: true }" x-show="show" x-transition
-                                            x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
-                                            {{ __('Saved.') }}</p>
-                                    @endif
-                                </div>
-                            </div>
+    <div class="col-sm-9 text-secondary">
+        <button type="submit" class="btn btn-primary px-4">Lưu thay đổi</button>
+    </div>
+</div>
+
+@if (session('status'))
+    <div class="alert alert-success mt-3">
+        {{ session('status') }}
+    </div>
+@endif
+
                         </form>
                     </div>
                 </div>

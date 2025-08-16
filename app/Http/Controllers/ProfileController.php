@@ -38,7 +38,7 @@ class ProfileController extends Controller
     $user->phone = $request->phone;
     $user->save();
 
-    return Redirect::route('profile.edit')->with('status', 'Cập nhật thông tin thành công');
+    return Redirect::route('profile.edit')->with('success', 'Cập nhật thông tin thành công');
 }
 
 

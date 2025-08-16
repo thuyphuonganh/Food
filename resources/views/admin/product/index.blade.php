@@ -41,7 +41,7 @@
                         <th>Ảnh</th>
                         <th>Danh mục</th>
                         <th>Trạng thái</th>
-                        <th class="text-right">Tùy chỉnh</th>
+                        <th class="text-right">Sửa</th>
                     </tr>
                 </thead>
                 <tbody>

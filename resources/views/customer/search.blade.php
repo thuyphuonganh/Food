@@ -63,7 +63,27 @@
         background-color: #94D2BD; 
         border: none;
     }
+    @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* đổi từ ngang -> dọc */
+        align-items: flex-start; /* canh trái */
+    }
 
+    .navbar .navbar-nav {
+        flex-direction: column; /* các item dọc */
+        width: 30%; /* full ngang */
+    }
+
+    .navbar .dropdown {
+        width: 100%; /* full ngang giống mấy nút kia */
+        margin-top: 10px;
+    }
+
+    .navbar .dropdown .nav-link {
+        width: 100%;
+        justify-content: flex-start; /* text/icon sát trái */
+    }
+}
     </style>
     <div id="hero-carousel" class="carousel slide animate-slide-up" data-bs-ride="carousel">
         <div class="container">

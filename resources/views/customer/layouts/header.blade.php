@@ -10,14 +10,22 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+         
     }
 
     .logo {
         font-size: 24px;
         font-weight: bold;
         text-decoration: none;
+        margin-left:50px;
         
     }
+    .logo img {
+    height: 50px;      /* kích thước desktop */
+    max-width: 150px;
+    
+}
+    
     .icon{margin-left: 25px;}
     .search-bar {
         flex: 1;
@@ -27,11 +35,13 @@
     }
 
     .search-bar input[type="text"] {
-        width: 300px;
+       width: 300px;
         padding: 6px 10px;
         border: 1px solid #ccc;
         border-radius: 4px 0 0 4px;
         outline: none;
+         flex: 1;
+   
     }
 
     .search-bar button {
@@ -156,13 +166,32 @@
     .dropdown > a:hover img {
         transform: scale(1.2) rotate(-5deg);
     }
-
+    
+@media (max-width: 768px) {
+    header {
+        padding: 10px;  /* giảm padding cho gọn */
+    }
+    .logo {
+        margin-left: 0 !important;
+        
+        
+    }
+    .logo img {
+        height: 40px;   /* thu nhỏ logo */
+        max-width: 70px;
+    }
+    .search-bar {
+        width: 50px;
+        margin-right:10px;
+    }
+    
+}
 
 </style>
 
 <header>
     <!-- LOGO -->
-    <a href="{{ route('home') }}" class="logo" style="margin-left: 50px;"><img src="{{ asset('images/logo2.png') }}" alt="Logo" style="height: 30%; width: 40%;"></a>
+    <a href="{{ route('home') }}" class="logo" ><img src="{{ asset('images/logo2.png') }}" alt="Logo" ></a>
 
     <!-- THANH TÌM KIẾM -->
     <form class="search-bar" method="GET" action="{{ route('search') }}">
@@ -207,8 +236,12 @@
                                     </li>
                                     <li><a class="dropdown-item" href="{{ route('orders.index') }}">Đơn hàng</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="#"
-                                            onclick="document.getElementById('myForm').submit()">Đăng xuất</a></li>
+                                    <li>
+    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModalHeader">
+        Đăng xuất
+    </a>
+</li>
+
                                 @else
                                     <li><a class="dropdown-item" href="{{ route('login') }}">Đăng nhập</a></li>
                                     
@@ -221,4 +254,5 @@
    
     </div>
     </div>
+    
 </header>

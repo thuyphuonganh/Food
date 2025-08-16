@@ -1,6 +1,33 @@
 @extends('admin.layouts.master')
 
-@section('content')
+@section('content')<div class="container animate-slide-up">
+<div style="margin-top: 2rem;">
+    <a href="{{ route('admin.contacts.index') }}" style="text-decoration: none;">
+        <button style="
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            background-color: #BB3E03;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0 1rem;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        "
+        onmouseover="this.style.backgroundColor='#EE9B00'; this.style.transform='scale(1.05)';"
+        onmouseout="this.style.backgroundColor='#BB3E03'; this.style.transform='scale(1)';">
+            <img src="{{ asset('images/arrow-left-icon.png') }}" alt="Quay lại" style="
+                height: 20px;
+                margin-right: 8px;
+                transition: transform 0.3s ease;
+            "
+            onmouseover="this.style.transform='translateX(-3px)';"
+            onmouseout="this.style.transform='translateX(0)';">
+            Quay về
+        </button></a>
 <div class="container mt-4">
     <h2>Chi tiết liên hệ</h2>
 
@@ -18,8 +45,7 @@
     <p><strong>Email:</strong> {{ $contact->email }}</p>
     <p><strong>Nội dung:</strong> {{ $contact->message }}</p>
     <p><strong>Ngày gửi:</strong> {{ $contact->created_at->format('d/m/Y H:i') }}</p>
-
-    <a href="{{ route('admin.contacts.index') }}" class="btn btn-secondary">Quay lại</a>
+</div>
 </div>
 
 {{-- Nếu đã phản hồi rồi thì ẩn form --}}

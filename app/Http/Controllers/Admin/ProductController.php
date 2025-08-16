@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $keyword = $request->search ?? '';
         $products = Product::where('name', 'like', '%' . $keyword . '%')
-            ->paginate(15);
+            ->paginate(10);
         return view('admin.product.index', compact('products'));
     }
 

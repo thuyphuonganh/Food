@@ -30,4 +30,19 @@ class OrderController extends Controller
         // Trả về view chi tiết đơn hàng
         return view('customer.order-details', compact('order'));
     }
+    public function cancel($id)
+{
+    $order = Order::findOrFail($id);
+
+    // Chỉ cho phép hủy nếu đơn hàng đang chờ xử lý
+    if ($order->status === 'pending') {
+        $order->status = 'cancelled';
+        $order->save();
+
+        return redirect()->route('orders.index')->with('success', 'Đơn hàng đã được hủy thành công.');
+    }
+
+    return redirect()->route('orders.index')->with('error', 'Không thể hủy đơn hàng này.');
+}
+
 }

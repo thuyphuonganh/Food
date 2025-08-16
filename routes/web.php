@@ -67,6 +67,9 @@ Route::group(['middleware' => ['auth', 'verified', 'check_role:user']], function
     // Thêm route cho danh sách đơn hàng và chi tiết đơn hàng
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::put('/orders/{id}/cancel', [OrderController::class, 'cancel'])
+    ->name('orders.cancel');
+
 });
 
 Route::group(['middleware' => ['auth', 'verified', 'check_role:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function() {

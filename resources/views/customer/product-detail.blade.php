@@ -1,9 +1,20 @@
 @extends('customer.layouts.master')
 @section('content')
+<style>
+    @media (max-width: 768px) {
+    .btn-back {
+        margin-bottom: 1rem; /* tạo khoảng cách với hình */
+        margin-top: -10px;   /* đẩy nút lên 1 chút */
+    }
+}
+
+</style>
+
+
     <div class="container animate-slide-up">
 <div style="margin-top: 2rem;">
     <a href="{{ route('dashboard') }}" style="text-decoration: none;">
-        <button style="
+        <button class="btn-back" style="
             height: 2.5rem;
             display: flex;
             align-items: center;
@@ -48,57 +59,63 @@
             <input type="hidden" name="operator" value="1">
         </form>
 
-        <div class="d-flex">
-            <div class="card col-xl-7 col-lg-7 me-3 d-flex justify-content-center align-items-center" style="height: 400px; border: none;">
-                <img src="{{ asset($product->image) }}" alt="" style="height: 300px; object-fit: contain;">
-            </div>
-
-            <div class="col-xl-5 col-lg-5" style="padding-left: 20px;">
-                <p style="color: #0A9396; font-weight: bolder; font-size: 40px;">{{ $product->name }}</p>
-                <p style="color: #CA6702; font-weight: bolder; font-size: 25px;">Giá: {{ number_format($product->price, 0, ',', '.') }} đ</p>
-
-                <p class="description-product mt-1">
-                    <strong>Tình trạng: </strong>
-                    @if($product->status == 'in-stock')
-                        Còn món
-                    @elseif($product->status == 'out-stock')
-                        Hết món
-                    @else
-                        {{ $product->status }}
-                    @endif
-                </p>
-
-                <p class="description-product mt-1"><strong>Danh mục: </strong>{{ $product->category->name }}</p>
-                <p class="description-product mt-2"><strong>Thông tin món ăn: </strong>{{ $product->description }}</p>
-
-                <div class="d-flex justify-content-center mt-4">
-    {{-- Nút thêm vào giỏ --}}
-    <button type="submit" form="formAddToCart" class="btn btn-outline-warning me-2" style="width: 15%">
-        <div class="d-flex align-items-center justify-content-center">
-            <img src="{{ asset('images/carticon.png') }}" alt="Giỏ hàng" style="width: 40px; height: 40px;">
+        <div class="row">
+    <!-- Ảnh sản phẩm -->
+    <div class="col-12 col-lg-7 mb-3 d-flex justify-content-center align-items-center">
+        <div class="card border-0 w-100 text-center">
+            <img src="{{ asset($product->image) }}" 
+                 alt="{{ $product->name }}" 
+                 class="img-fluid" 
+                 style="max-height: 400px; object-fit: contain;">
         </div>
-    </button>
+    </div>
 
-    {{-- Nút đặt món ngay --}}
-    <form action="{{ route('checkout.index') }}" method="POST" id="formCartCheckout" style="display: inline-block; width: 85%;">
-        @csrf
-        <input type="hidden" name="selected_products" value='[{
-            "productId": "{{ $product->id }}",
-            "name": "{{ $product->name }}",
-            "price": {{ $product->price }},
-            "quantity": 1
-        }]'>
+    <!-- Thông tin sản phẩm -->
+    <div class="col-12 col-lg-5">
+        <p class="text-primary fw-bold fs-1">{{ $product->name }}</p>
+        <p class="text-warning fw-bold fs-3">Giá: {{ number_format($product->price, 0, ',', '.') }} đ</p>
 
-        <button type="submit" class="btn btn-warning w-100 me-2" style=" height: 60px;">
-            <div class="d-flex align-items-center justify-content-center">
-                <span class="ms-2" style="font-weight: bold">ĐẶT MÓN NGAY</span>
-            </div>
-        </button>
-    </form>
+        <p><strong>Tình trạng: </strong>
+            @if($product->status == 'in-stock')
+                <span class="text-success">Còn món</span>
+            @elseif($product->status == 'out-stock')
+                <span class="text-danger">Hết món</span>
+            @else
+                {{ $product->status }}
+            @endif
+        </p>
+
+        <p><strong>Danh mục: </strong>{{ $product->category->name }}</p>
+        <p><strong>Thông tin món ăn: </strong>{{ $product->description }}</p>
+
+        <!-- Nút hành động -->
+        <div class="d-flex flex-wrap mt-4">
+            @if($product->status == 'in-stock')
+                {{-- Nút giỏ hàng --}}
+                <button type="submit" form="formAddToCart" 
+                        class="btn btn-outline-warning me-2 mb-2 d-flex align-items-center justify-content-center" 
+                        style="width: 60px; height: 60px;">
+                    <img src="{{ asset('images/carticon.png') }}" alt="Giỏ hàng" class="img-fluid" style="max-width: 35px;">
+                </button>
+
+                {{-- Nút đặt món ngay --}}
+                <form action="{{ route('checkout.index') }}" method="POST" id="formCartCheckout" class="flex-grow-1 mb-2">
+                    @csrf
+                    <input type="hidden" name="selected_products" value='[{
+                        "productId": "{{ $product->id }}",
+                        "name": "{{ $product->name }}",
+                        "price": {{ $product->price }},
+                        "quantity": 1
+                    }]'>
+                    <button type="submit" class="btn btn-warning w-100 h-100 fw-bold" style="height: 60px;">
+                        ĐẶT MÓN NGAY
+                    </button>
+                </form>
+            @endif
+        </div>
+    </div>
 </div>
 
-            </div>
-        </div>
 
         <div style="margin-bottom: 250px;"></div> <!-- tạo khoảng cách với footer -->
     </div>

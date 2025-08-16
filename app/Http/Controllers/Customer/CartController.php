@@ -19,7 +19,22 @@ class CartController extends Controller
 {
     try {
         $cart = Cart::where('user_id', Auth::id())->first();
-        $cartItems = $cart ? $cart->cartItems()->with('product')->get() : collect();
+        $cartItems = collect();
+
+        if ($cart) {
+            $cartItems = $cart->cartItems()->with('product')->get();
+
+            // Xóa món hết hàng khỏi DB
+            foreach ($cartItems as $item) {
+                if ($item->product->status !== 'in-stock') {
+                    $item->delete();
+                }
+            }
+
+            // Lấy lại danh sách sau khi xóa
+            $cartItems = $cart->cartItems()->with('product')->get();
+        }
+
         $totalCost = $cartItems->sum(fn($item) => $item->price * $item->quantity);
 
         return view('customer.cart.index', compact('cartItems', 'totalCost'));
@@ -66,6 +81,7 @@ class CartController extends Controller
                 $cartItem->update([
                     'quantity' => $cartItem->quantity + 1
                 ]);
+                $message = 'Cập nhật giỏ hàng thành công!';
             } else { // Xóa bớt
                 $cartItem->update([
                     'quantity' => $cartItem->quantity - 1
@@ -73,6 +89,7 @@ class CartController extends Controller
                 if ($cartItem->quantity <= 0) {
                     $cartItem->delete();
                 }
+                $message = 'Cập nhật giỏ hàng thành công!';
             }
         } else {
             CartItem::create([
@@ -81,9 +98,10 @@ class CartController extends Controller
                 'quantity' => $request->quantity,
                 'price' => $product->price
             ]);
+            $message = 'Thêm vào giỏ hàng thành công!';
         }
 
-        return redirect()->back()->with('success', 'Cập nhật giỏ hàng thành công!');
+        return redirect()->back()->with('success', $message);
     } catch (Exception $e) {
         return redirect()->back()->with('error', 'Có lỗi xảy ra: ' . $e->getMessage());
     }

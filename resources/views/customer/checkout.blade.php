@@ -81,7 +81,7 @@
                value="{{ old('address', $user->address ?? '') }}">
     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Mô tả</label>
+                        <label for="description" class="form-label">Ghi chú</label>
                         <textarea class="form-control" rows="2" name="description"></textarea>
                     </div>
 
